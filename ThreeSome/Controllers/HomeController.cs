@@ -13,6 +13,11 @@ namespace ThreeSome.Controllers
             return View();
         }
 
+        public ActionResult Trending()
+        {
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
