@@ -9,10 +9,15 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <style>
         .content {
-            width: 80%;
-            transform: translateX(12.5%);
+            display: flex;
+            flex-direction:  column;
+            justify-content:center;
             height: 100%;
             padding-top: 40px;
+            padding-left:50px;
+            padding-right:50px;
+            padding-bottom:5px;
+            overflow-x: hidden;
         }
 
         .footer {
@@ -36,11 +41,11 @@
                 <button  id="search-button" ><ion-icon name="search"></ion-icon></button>
             </div>
             <nav class="nav">
-                <a class="a1" href="#">Home</a>
-                <a class="a1" href="#">Trending</a>
-                <a class="a1" href="#">Genre</a>
-                <a class="a1" href="#">Favorite</a>
-                <a class="a1" href="#">About</a>
+                <a class="a1" href="Index">Home</a>
+                <a class="a1" href="Trending">Trending</a>
+                <a class="a1" href="Genre">Genre</a>
+                <a class="a1" href="Favorite">Favorite</a>
+                <a class="a1" href="About">About</a>
                 <button class="bt">Login</button>
             </nav>
         </div>
