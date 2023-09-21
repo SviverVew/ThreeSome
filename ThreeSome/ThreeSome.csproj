@@ -143,7 +143,10 @@
     <Content Include="Content\Bootstrap\bootstrap.min.css" />
     <Content Include="Content\Bootstrap\bootstrap.rtl.css" />
     <Content Include="Content\Bootstrap\bootstrap.rtl.min.css" />
+    <Content Include="Content\Css\trending.css" />
+    <Content Include="Content\Css\Login-Register.css" />
     <Content Include="Content\Css\Main.css" />
+    <Content Include="Content\Img\chill.jpg" />
     <Content Include="Content\Img\crytsal-blue-cube-4k-ku.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />

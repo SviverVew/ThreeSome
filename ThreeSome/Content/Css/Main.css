@@ -9,6 +9,7 @@ body {
     background: #1e1e1e no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    background-image: url('../img/chill.jpg');
 }
 
 .div-header {
@@ -40,20 +41,26 @@ body {
 .nav .a1:hover::after {
     transform: scale(1);
 }
+.search{
+    display:block;
+    height:50px;
+    width:350px;
+}
 #search-bar{
-    width:320px;
+    width:85%;
     border-radius:50px 0px 0px 50px;    
     border:1px solid #3d3d3d;
     height:50px;
     padding-left:20px;
     background-color:#171717;
     color:white;
+
 }
 #search-button {
     border:none;
-    width: 50px;
+    width: 15%;
     border-radius: 0px 50px 50px 0px;
-    height: 50px;
+    height: 100%;
     background-color: #3d3d3d;
     margin-left:-5px;
     outline:none;
