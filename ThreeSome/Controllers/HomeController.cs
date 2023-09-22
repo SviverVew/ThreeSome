@@ -8,6 +8,10 @@ namespace ThreeSome.Controllers
 {
     public class HomeController : Controller
     {
+        public ActionResult Register()
+        {
+            return View();
+        }
         public ActionResult Index()
         {
             return View();

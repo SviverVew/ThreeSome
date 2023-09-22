@@ -1,6 +1,12 @@
-﻿.login-page {
+﻿/***********Login page*********/
+/***********Login page*********/
+/***********Login page*********/
+/***********Login page*********/
+/***********Login page*********/
+/***********Login page*********/
+.login-page {
     width: 560px;
-    height: 450px;
+   height: 450px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -13,7 +19,7 @@
     box-shadow: 0px 0px 10px #808080;
     align-items: center;
 }
-    .login-page .user-name {
+.login-page .user-name {
         width: 460px;
         height: 50px;
         margin-bottom: 6px;
@@ -22,13 +28,15 @@
         border: 1px solid #2a2929;
         border-radius: 10px;
         box-shadow: 0px 0px 20px #1f1f1f;
-        transition:ease-out 0.5s;
+        transition: ease-out 0.5s;
     }
-        .login-page .user-name:focus{
-            border-color:white;
-            outline:none;
+
+.login-page .user-name:focus {
+            border-color: white;
+            outline: none;
         }
-    .login-page .password {
+
+.login-page .password {
         width: 460px;
         height: 50px;
         margin-bottom: 30px;
@@ -39,11 +47,12 @@
         box-shadow: 0px 0px 20px #1f1f1f;
         transition: ease-out 0.5s;
     }
-    .login-page .register {
+
+.login-page .register {
         width: 260px;
         height: 50px;
         margin-bottom: 30px;
-        margin-top:20px;
+        margin-top: 20px;
         color: white;
         background: #50c1eb;
         border: 1px solid #2a2929;
@@ -51,24 +60,28 @@
         box-shadow: 0px 0px 20px #1f1f1f;
         transition: 0.5s;
     }
-        .login-page .register:hover {
+
+.login-page .register:hover {
             background-color: white;
             border-color: black;
             color: black;
         }
- .login-page .password:focus {
-            border-color: white;
-            outline: none;
-        }
-::placeholder {
-            color: white;
-            padding-left: 4px;
-        }
-.login-page .login:hover{
-    background-color: #50c1eb;
-    border-color:white
 
+    .login-page .password:focus {
+        border-color: white;
+        outline: none;
+    }
+
+::placeholder {
+    color: white;
+    padding-left: 4px;
 }
+
+.login-page .login:hover {
+    background-color: #50c1eb;
+    border-color: white
+}
+
 .login {
     width: 460px;
     height: 50px;
@@ -79,4 +92,80 @@
     border-radius: 10px;
     box-shadow: 0px 0px 20px #1f1f1f;
     transition: 0.5s;
+}
+/*************Register Page********/
+/*************Register Page********/
+/*************Register Page********/
+/*************Register Page********/
+/*************Register Page********/
+.register-page {
+    width: 600px;
+    height:700px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 25%;
+    padding-top: 40px;
+    /*background: #464646;*/
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    box-shadow: 20px;
+    box-shadow: 0px 0px 10px #808080;
+    align-items: center;
+}
+.register-regispage {
+    width: 460px;
+    height: 50px;
+    margin-bottom: 30px;
+    color: white;
+    background: #3f4b92;
+    border: 1px solid #2a2929;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px #1f1f1f;
+    transition: 0.5s;
+}
+.register-regispage:hover{
+    color:black;
+    background:#78b7b9;
+    border-color:white;
+}
+
+.login-regispage {
+    width: 260px;
+    height: 50px;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    color: white;
+    background: #50c1eb;
+    border: 1px solid #2a2929;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px #1f1f1f;
+    transition: 0.5s;
+}
+.login-regispage:hover {
+    color: black;
+    background: white;
+    border-color: white;
+    box-shadow:0px 0px 3px white;
+}
+ .name {
+        width: 460px;
+        height: 50px;
+        margin-bottom: 6px;
+        padding-left: 20px;
+        background: #808080;
+        border: 1px solid #2a2929;
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px #1f1f1f;
+        transition: ease-in-out 0.3s;
+    }
+.name:focus {
+    border-color: white;
+    outline: none;
+}
+.name1 {
+    padding-top:30px;
+    padding-bottom:10px;
+    display:flex;
+    flex-direction:column;
+
 }
