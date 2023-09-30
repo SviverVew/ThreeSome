@@ -146,6 +146,7 @@
     <Content Include="Content\Css\trending.css" />
     <Content Include="Content\Css\Login-Register.css" />
     <Content Include="Content\Css\Main.css" />
+    <Content Include="Content\Img\3sumteam.png" />
     <Content Include="Content\Img\chill.jpg" />
     <Content Include="Content\Img\crytsal-blue-cube-4k-ku.jpg" />
     <Content Include="favicon.ico" />

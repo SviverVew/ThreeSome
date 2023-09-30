@@ -6,16 +6,16 @@
 @*icon:<ion-icon name="person-outline"></ion-icon> *@
 <link href="~/Content/Css/Login-Register.css" rel="stylesheet" />
 <div class="register-page">
-    <input class="name" type="text" name="user-name" placeholder="UserName" />
-    <input class="name" type="password" name="password" placeholder="Password" />
+    <input class="name" type="text" name="user-name" placeholder="UserName" required/>
+    <input class="name" type="password" name="password" placeholder="Password" required />
     <div class="name1">
-        <input class="name" type="email" name="email" placeholder="Email" />
-        <input class="name" type="text" name="firstname" placeholder="FirstName" />
-        <input class="name" type="text" name="lastname" placeholder="LastName" />
-        <input class="name" type="date" name="birthdate" placeholder="Birthdate" />
+        <input class="name" type="email" name="email" placeholder="Email" required/>
+        <input class="name" type="text" name="firstname" placeholder="FirstName" required />
+        <input class="name" type="text" name="lastname" placeholder="LastName" required/>
+        <input class="name" type="date" name="birthdate" placeholder="Birthdate" required/>
         <input class="name" type="number" name="phone" placeholder="Phone" />
     </div>
-    <button class="register-regispage">Register</button>
+    <button type="submit" class="register-regispage">Register</button>
     <a href="Login"><button class="login-regispage">Login</button></a>
 
 </div>

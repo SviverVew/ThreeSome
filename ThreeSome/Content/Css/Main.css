@@ -12,7 +12,11 @@ body {
     background-attachment: fixed;
     background-image: url('../img/chill.jpg');
 }
-
+#logo {
+    height: 100px;
+    width: 100px;
+    color: white;
+}
 .div-header {
     position: sticky;
     top: 0%;
