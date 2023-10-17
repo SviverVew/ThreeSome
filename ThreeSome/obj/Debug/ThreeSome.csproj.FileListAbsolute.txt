@@ -77,3 +77,7 @@ D:\Web project\ThreeSome\ThreeSome\obj\Debug\ThreeSome.csproj.CoreCompileInputs.
 D:\Web project\ThreeSome\ThreeSome\obj\Debug\ThreeSome.csproj.CopyComplete
 D:\Web project\ThreeSome\ThreeSome\obj\Debug\ThreeSome.dll
 D:\Web project\ThreeSome\ThreeSome\obj\Debug\ThreeSome.pdb
+D:\Web project\ThreeSome\ThreeSome\bin\EntityFramework.dll
+D:\Web project\ThreeSome\ThreeSome\bin\EntityFramework.SqlServer.dll
+D:\Web project\ThreeSome\ThreeSome\bin\EntityFramework.xml
+D:\Web project\ThreeSome\ThreeSome\bin\EntityFramework.SqlServer.xml

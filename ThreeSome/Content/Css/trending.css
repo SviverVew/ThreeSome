@@ -6,7 +6,13 @@
     text-align: center;
     width: auto;
     height: auto;
+    color: #1e1e1e;
+    padding-bottom: 50px;
+    transition: 0.3s;
 }
+    .box-video:hover {
+        backdrop-filter: blur(20px);
+    }
 .size-img {
     border-radius: 15px 15px 0px 0px;
 }

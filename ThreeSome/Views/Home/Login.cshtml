@@ -1,12 +1,16 @@
 ﻿@{
     Layout = "~/Views/Shared/_FilmLayout.cshtml";
 }
+<script src="~/Scripts/login-regis/login.js"></script>
 <link href="~/Content/Css/Login-Register.css" rel="stylesheet" />
 <div class="login-page">
     <input class="user-name" type="text" name="user-name" placeholder="UserName" />
-    <input class="password" type="password" name="password" placeholder="Password" />
+    <span id="user-name_error"></span>
+    <input class="password-login" type="password" name="password" placeholder="Password" />
+    <span id="save"> <input class="check" type="radio" name="sure" /> <p>Save Password</p></span>
     <button class="login">Login</button>
     <a href="#" style="text-decoration:none;color:azure">Fogot Password</a>
-    <a href="Register"><button class="register">Register</button></a>
+
+    <a href="Register"><button class="register" onclick="return validate()">Register</button></a>
 </div>
 
