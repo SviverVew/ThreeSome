@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WEBEntitiesModelStoreContainer" CdmEntityContainer="WEBEntitiesEntities">
+    <EntitySetMapping Name="AdminTables">
+      <EntityTypeMapping TypeName="WEBEntitiesModel.AdminTable">
+        <MappingFragment StoreEntitySet="AdminTable">
+          <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+          <ScalarProperty Name="AdminPass" ColumnName="AdminPass" />
+          <ScalarProperty Name="nameAdmin" ColumnName="nameAdmin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="espisodes">
+      <EntityTypeMapping TypeName="WEBEntitiesModel.espisode">
+        <MappingFragment StoreEntitySet="espisode">
+          <ScalarProperty Name="vidID" ColumnName="vidID" />
+          <ScalarProperty Name="vidAddress" ColumnName="vidAddress" />
+          <ScalarProperty Name="vidIMG" ColumnName="vidIMG" />
+          <ScalarProperty Name="film_ID" ColumnName="film_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="favorites">
+      <EntityTypeMapping TypeName="WEBEntitiesModel.favorite">
+        <MappingFragment StoreEntitySet="favorite">
+          <ScalarProperty Name="favID" ColumnName="favID" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="episodeID" ColumnName="episodeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Films">
+      <EntityTypeMapping TypeName="WEBEntitiesModel.Film">
+        <MappingFragment StoreEntitySet="Film">
+          <ScalarProperty Name="filmID" ColumnName="filmID" />
+          <ScalarProperty Name="filmTitle" ColumnName="filmTitle" />
+          <ScalarProperty Name="filmDes" ColumnName="filmDes" />
+          <ScalarProperty Name="filmEsp" ColumnName="filmEsp" />
+          <ScalarProperty Name="filmStatus" ColumnName="filmStatus" />
+          <ScalarProperty Name="filmLink" ColumnName="filmLink" />
+          <ScalarProperty Name="filmIMG" ColumnName="filmIMG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="genres">
+      <EntityTypeMapping TypeName="WEBEntitiesModel.genre">
+        <MappingFragment StoreEntitySet="genre">
+          <ScalarProperty Name="genreID" ColumnName="genreID" />
+          <ScalarProperty Name="genreName" ColumnName="genreName" />
+          <ScalarProperty Name="film_ID" ColumnName="film_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTables">
+      <EntityTypeMapping TypeName="WEBEntitiesModel.UserTable">
+        <MappingFragment StoreEntitySet="UserTable">
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="userPass" ColumnName="userPass" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="userDate" ColumnName="userDate" />
+          <ScalarProperty Name="userEmail" ColumnName="userEmail" />
+          <ScalarProperty Name="userPhone" ColumnName="userPhone" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="MoneyCheck" ColumnName="MoneyCheck" />
+          <ScalarProperty Name="FavoriteVideo" ColumnName="FavoriteVideo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

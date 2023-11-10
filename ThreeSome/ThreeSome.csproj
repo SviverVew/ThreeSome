@@ -56,6 +56,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -127,9 +129,49 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\FavouriteController.cs" />
+    <Compile Include="Controllers\FilmTagController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PlayMovieController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AdminTable.cs">
+      <DependentUpon>WEBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\espisode.cs">
+      <DependentUpon>WEBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\favorite.cs">
+      <DependentUpon>WEBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Film.cs">
+      <DependentUpon>WEBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FilmModel.cs" />
+    <Compile Include="Models\genre.cs">
+      <DependentUpon>WEBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TapPhimModel.cs" />
+    <Compile Include="Models\UserTable.cs">
+      <DependentUpon>WEBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEBEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WEBEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEBEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WEBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WEBEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WEBEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -150,21 +192,50 @@
     <Content Include="Content\Bootstrap\bootstrap.min.css" />
     <Content Include="Content\Bootstrap\bootstrap.rtl.css" />
     <Content Include="Content\Bootstrap\bootstrap.rtl.min.css" />
+    <Content Include="Content\Css\Home.css" />
+    <Content Include="Content\Css\Responsive.css" />
     <Content Include="Content\Css\trending.css" />
     <Content Include="Content\Css\Login-Register.css" />
     <Content Include="Content\Css\Main.css" />
     <Content Include="Content\Img\3sumteam.png" />
     <Content Include="Content\Img\chill.jpg" />
     <Content Include="Content\Img\crytsal-blue-cube-4k-ku.jpg" />
+    <Content Include="Content\Img\SliderHome\deadpool.jpg" />
+    <Content Include="Content\Img\SliderHome\dgag542-e3776f0c-3cca-4ce7-b683-672fd79f8455.jpg" />
+    <Content Include="Content\Img\SliderHome\gear-5-luffy-one-piece.png" />
+    <Content Include="Content\Img\SliderHome\Oppenheimer_new_trailer_bhagwad.png" />
+    <Content Include="Content\Img\SliderHome\phim-marvel-ra-mat-trong-2-nam-toi.jpg" />
+    <Content Include="Content\Img\SliderHome\spider man.jpg" />
+    <Content Include="Content\Img\SliderHome\top-20-phim-le-han-quoc-hay-nhat.png" />
     <Content Include="favicon.ico" />
+    <Content Include="FilmFile\Op 1.mp4" />
+    <Content Include="FilmFile\op 2.mp4" />
+    <Content Include="FilmFile\op 3.mp4" />
     <Content Include="Global.asax" />
     <Content Include="Content\Bootstrap\Site.css" />
+    <Content Include="Models\WEBEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WEBEntities.edmx</DependentUpon>
+      <LastGenOutput>WEBEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\WEBEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WEBEntities.edmx</DependentUpon>
+      <LastGenOutput>WEBEntities.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\Bootstrap\bootstrap.bundle.js" />
     <Content Include="Scripts\Bootstrap\bootstrap.bundle.min.js" />
     <Content Include="Scripts\Bootstrap\bootstrap.esm.js" />
     <Content Include="Scripts\Bootstrap\bootstrap.esm.min.js" />
     <Content Include="Scripts\Bootstrap\bootstrap.js" />
     <Content Include="Scripts\Bootstrap\bootstrap.min.js" />
+    <EntityDeploy Include="Models\WEBEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WEBEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\WEBEntities.edmx.diagram">
+      <DependentUpon>WEBEntities.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\Bootstrap\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\Bootstrap\jquery-3.4.1.js" />
     <Content Include="Scripts\Bootstrap\jquery-3.4.1.min.js" />
@@ -194,10 +265,15 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Trending.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\PlayMovie\Video.cshtml" />
+    <Content Include="Views\FilmTag\FilmList.cshtml" />
+    <Content Include="Views\FilmTag\FilmDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Views\Favourite\" />
+    <Folder Include="Views\Login\" />
+    <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Bootstrap\bootstrap.rtl.min.css.map" />
@@ -225,6 +301,9 @@
     <Content Include="Scripts\Bootstrap\bootstrap.bundle.js.map" />
     <Content Include="Scripts\Bootstrap\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\Bootstrap\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

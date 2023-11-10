@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ThreeSome.Models.FilmModel>
+
+@{
+    ViewBag.Title = "FilmDetail";
+    Layout = "~/Views/Shared/_FilmLayout.cshtml";
+}
+<link href="~/Content/Css/trending.css" rel="stylesheet" />
+<style>
+    .size-img {
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
+    }
+    .info-container {
+        
+    }
+    .dess {
+        
+    }
+    .anh-phim{
+         
+    }
+</style>
+@if (ViewBag.ErrorMessage != null)
+{
+    <div>
+        <h3>@ViewBag.ErrorMessage</h3>
+    </div>
+}
+else if (Model.Any())
+{
+<span style="display:flex" class="info-container">
+    <div class="dess">
+        <h3>@Model.First().FilmTitle</h3>
+        <p>@Model.First().FilmDes</p>
+    </div>
+    <img class="anh-phim" src="@Url.Content(Model.First().FilmImg)" />
+
+</span>
+}
+    <h3 style="margin-top:300px">Danh sách các tập phim </h3>
+    <br />
+    <div class="container" style="display:flex">
+        @foreach (var item in Model)
+        {
+
+            <div class="col" style="margin:50px" >
+                <img class="size-img" src="@Url.Content(item.VidIMG)" />
+                <h3 class="card-title">@item.VidTitle</h3>
+                <h1 class="card-title-view">
+                    @item.VidAddress
+                </h1>
+            </div>
+        }
+    </div>

@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WEBEntitiesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdminTable">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdminName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="AdminPass" Type="nvarchar" MaxLength="100" />
+          <Property Name="nameAdmin" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="espisode">
+          <Key>
+            <PropertyRef Name="vidID" />
+          </Key>
+          <Property Name="vidID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="vidAddress" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="vidIMG" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="film_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="favorite">
+          <Key>
+            <PropertyRef Name="favID" />
+          </Key>
+          <Property Name="favID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userID" Type="int" />
+          <Property Name="episodeID" Type="int" />
+        </EntityType>
+        <EntityType Name="Film">
+          <Key>
+            <PropertyRef Name="filmID" />
+          </Key>
+          <Property Name="filmID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="filmTitle" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="filmDes" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="filmEsp" Type="int" Nullable="false" />
+          <Property Name="filmStatus" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="filmLink" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="filmIMG" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="genre">
+          <Key>
+            <PropertyRef Name="genreID" />
+          </Key>
+          <Property Name="genreID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="genreName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="film_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="userID" />
+          </Key>
+          <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="userPass" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="firstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="lastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="userDate" Type="date" />
+          <Property Name="userEmail" Type="char" MaxLength="30" Nullable="false" />
+          <Property Name="userPhone" Type="int" Nullable="false" />
+          <Property Name="Sex" Type="nvarchar" MaxLength="4" />
+          <Property Name="MoneyCheck" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="FavoriteVideo" Type="int" />
+        </EntityType>
+        <Association Name="FK__espisode__film_I__2D27B809">
+          <End Role="Film" Type="Self.Film" Multiplicity="0..1" />
+          <End Role="espisode" Type="Self.espisode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Film">
+              <PropertyRef Name="filmID" />
+            </Principal>
+            <Dependent Role="espisode">
+              <PropertyRef Name="film_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__favorite__episod__30F848ED">
+          <End Role="espisode" Type="Self.espisode" Multiplicity="0..1" />
+          <End Role="favorite" Type="Self.favorite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="espisode">
+              <PropertyRef Name="vidID" />
+            </Principal>
+            <Dependent Role="favorite">
+              <PropertyRef Name="episodeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__favorite__userID__2A4B4B5E">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="0..1" />
+          <End Role="favorite" Type="Self.favorite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="favorite">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__genre__film_ID__300424B4">
+          <End Role="Film" Type="Self.Film" Multiplicity="0..1" />
+          <End Role="genre" Type="Self.genre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Film">
+              <PropertyRef Name="filmID" />
+            </Principal>
+            <Dependent Role="genre">
+              <PropertyRef Name="film_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WEBEntitiesModelStoreContainer">
+          <EntitySet Name="AdminTable" EntityType="Self.AdminTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="espisode" EntityType="Self.espisode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="favorite" EntityType="Self.favorite" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Film" EntityType="Self.Film" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="genre" EntityType="Self.genre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__espisode__film_I__2D27B809" Association="Self.FK__espisode__film_I__2D27B809">
+            <End Role="Film" EntitySet="Film" />
+            <End Role="espisode" EntitySet="espisode" />
+          </AssociationSet>
+          <AssociationSet Name="FK__favorite__episod__30F848ED" Association="Self.FK__favorite__episod__30F848ED">
+            <End Role="espisode" EntitySet="espisode" />
+            <End Role="favorite" EntitySet="favorite" />
+          </AssociationSet>
+          <AssociationSet Name="FK__favorite__userID__2A4B4B5E" Association="Self.FK__favorite__userID__2A4B4B5E">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="favorite" EntitySet="favorite" />
+          </AssociationSet>
+          <AssociationSet Name="FK__genre__film_ID__300424B4" Association="Self.FK__genre__film_ID__300424B4">
+            <End Role="Film" EntitySet="Film" />
+            <End Role="genre" EntitySet="genre" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WEBEntitiesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdminTable">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdminName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AdminPass" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="nameAdmin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="espisode">
+          <Key>
+            <PropertyRef Name="vidID" />
+          </Key>
+          <Property Name="vidID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="vidAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="vidIMG" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="film_ID" Type="Int32" />
+          <NavigationProperty Name="Film" Relationship="Self.FK__espisode__film_I__2D27B809" FromRole="espisode" ToRole="Film" />
+          <NavigationProperty Name="favorites" Relationship="Self.FK__favorite__episod__30F848ED" FromRole="espisode" ToRole="favorite" />
+        </EntityType>
+        <EntityType Name="favorite">
+          <Key>
+            <PropertyRef Name="favID" />
+          </Key>
+          <Property Name="favID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userID" Type="Int32" />
+          <Property Name="episodeID" Type="Int32" />
+          <NavigationProperty Name="espisode" Relationship="Self.FK__favorite__episod__30F848ED" FromRole="favorite" ToRole="espisode" />
+          <NavigationProperty Name="UserTable" Relationship="Self.FK__favorite__userID__2A4B4B5E" FromRole="favorite" ToRole="UserTable" />
+        </EntityType>
+        <EntityType Name="Film">
+          <Key>
+            <PropertyRef Name="filmID" />
+          </Key>
+          <Property Name="filmID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="filmTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="filmDes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="filmEsp" Type="Int32" Nullable="false" />
+          <Property Name="filmStatus" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="filmLink" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="filmIMG" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="espisodes" Relationship="Self.FK__espisode__film_I__2D27B809" FromRole="Film" ToRole="espisode" />
+          <NavigationProperty Name="genres" Relationship="Self.FK__genre__film_ID__300424B4" FromRole="Film" ToRole="genre" />
+        </EntityType>
+        <EntityType Name="genre">
+          <Key>
+            <PropertyRef Name="genreID" />
+          </Key>
+          <Property Name="genreID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="genreName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="film_ID" Type="Int32" />
+          <NavigationProperty Name="Film" Relationship="Self.FK__genre__film_ID__300424B4" FromRole="genre" ToRole="Film" />
+        </EntityType>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="userID" />
+          </Key>
+          <Property Name="userID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="userPass" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="userDate" Type="DateTime" Precision="0" />
+          <Property Name="userEmail" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="userPhone" Type="Int32" Nullable="false" />
+          <Property Name="Sex" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="MoneyCheck" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="FavoriteVideo" Type="Int32" />
+          <NavigationProperty Name="favorites" Relationship="Self.FK__favorite__userID__2A4B4B5E" FromRole="UserTable" ToRole="favorite" />
+        </EntityType>
+        <Association Name="FK__espisode__film_I__2D27B809">
+          <End Role="Film" Type="Self.Film" Multiplicity="0..1" />
+          <End Role="espisode" Type="Self.espisode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Film">
+              <PropertyRef Name="filmID" />
+            </Principal>
+            <Dependent Role="espisode">
+              <PropertyRef Name="film_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__favorite__episod__30F848ED">
+          <End Role="espisode" Type="Self.espisode" Multiplicity="0..1" />
+          <End Role="favorite" Type="Self.favorite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="espisode">
+              <PropertyRef Name="vidID" />
+            </Principal>
+            <Dependent Role="favorite">
+              <PropertyRef Name="episodeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__favorite__userID__2A4B4B5E">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="0..1" />
+          <End Role="favorite" Type="Self.favorite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="favorite">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__genre__film_ID__300424B4">
+          <End Role="Film" Type="Self.Film" Multiplicity="0..1" />
+          <End Role="genre" Type="Self.genre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Film">
+              <PropertyRef Name="filmID" />
+            </Principal>
+            <Dependent Role="genre">
+              <PropertyRef Name="film_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WEBEntitiesEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdminTables" EntityType="Self.AdminTable" />
+          <EntitySet Name="espisodes" EntityType="Self.espisode" />
+          <EntitySet Name="favorites" EntityType="Self.favorite" />
+          <EntitySet Name="Films" EntityType="Self.Film" />
+          <EntitySet Name="genres" EntityType="Self.genre" />
+          <EntitySet Name="UserTables" EntityType="Self.UserTable" />
+          <AssociationSet Name="FK__espisode__film_I__2D27B809" Association="Self.FK__espisode__film_I__2D27B809">
+            <End Role="Film" EntitySet="Films" />
+            <End Role="espisode" EntitySet="espisodes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__favorite__episod__30F848ED" Association="Self.FK__favorite__episod__30F848ED">
+            <End Role="espisode" EntitySet="espisodes" />
+            <End Role="favorite" EntitySet="favorites" />
+          </AssociationSet>
+          <AssociationSet Name="FK__favorite__userID__2A4B4B5E" Association="Self.FK__favorite__userID__2A4B4B5E">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="favorite" EntitySet="favorites" />
+          </AssociationSet>
+          <AssociationSet Name="FK__genre__film_ID__300424B4" Association="Self.FK__genre__film_ID__300424B4">
+            <End Role="Film" EntitySet="Films" />
+            <End Role="genre" EntitySet="genres" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WEBEntitiesModelStoreContainer" CdmEntityContainer="WEBEntitiesEntities">
+          <EntitySetMapping Name="AdminTables">
+            <EntityTypeMapping TypeName="WEBEntitiesModel.AdminTable">
+              <MappingFragment StoreEntitySet="AdminTable">
+                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+                <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+                <ScalarProperty Name="AdminPass" ColumnName="AdminPass" />
+                <ScalarProperty Name="nameAdmin" ColumnName="nameAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="espisodes">
+            <EntityTypeMapping TypeName="WEBEntitiesModel.espisode">
+              <MappingFragment StoreEntitySet="espisode">
+                <ScalarProperty Name="vidID" ColumnName="vidID" />
+                <ScalarProperty Name="vidAddress" ColumnName="vidAddress" />
+                <ScalarProperty Name="vidIMG" ColumnName="vidIMG" />
+                <ScalarProperty Name="film_ID" ColumnName="film_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="favorites">
+            <EntityTypeMapping TypeName="WEBEntitiesModel.favorite">
+              <MappingFragment StoreEntitySet="favorite">
+                <ScalarProperty Name="favID" ColumnName="favID" />
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="episodeID" ColumnName="episodeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Films">
+            <EntityTypeMapping TypeName="WEBEntitiesModel.Film">
+              <MappingFragment StoreEntitySet="Film">
+                <ScalarProperty Name="filmID" ColumnName="filmID" />
+                <ScalarProperty Name="filmTitle" ColumnName="filmTitle" />
+                <ScalarProperty Name="filmDes" ColumnName="filmDes" />
+                <ScalarProperty Name="filmEsp" ColumnName="filmEsp" />
+                <ScalarProperty Name="filmStatus" ColumnName="filmStatus" />
+                <ScalarProperty Name="filmLink" ColumnName="filmLink" />
+                <ScalarProperty Name="filmIMG" ColumnName="filmIMG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="genres">
+            <EntityTypeMapping TypeName="WEBEntitiesModel.genre">
+              <MappingFragment StoreEntitySet="genre">
+                <ScalarProperty Name="genreID" ColumnName="genreID" />
+                <ScalarProperty Name="genreName" ColumnName="genreName" />
+                <ScalarProperty Name="film_ID" ColumnName="film_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTables">
+            <EntityTypeMapping TypeName="WEBEntitiesModel.UserTable">
+              <MappingFragment StoreEntitySet="UserTable">
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="userPass" ColumnName="userPass" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="userDate" ColumnName="userDate" />
+                <ScalarProperty Name="userEmail" ColumnName="userEmail" />
+                <ScalarProperty Name="userPhone" ColumnName="userPhone" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="MoneyCheck" ColumnName="MoneyCheck" />
+                <ScalarProperty Name="FavoriteVideo" ColumnName="FavoriteVideo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

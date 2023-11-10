@@ -1,5 +1,85 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model IEnumerable<ThreeSome.Models.FilmModel>
+@{
+    ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_FilmLayout.cshtml";
 }
-<img src="~/Content/Img/crytsal-blue-cube-4k-ku.jpg" />
+<link href="~/Content/Css/Home.css" rel="stylesheet" />
+<!--Font Awesome CDN-->
+<div class="">
+    <div class="container">
+
+        <div class="slide">
+
+
+            <div class="item" style="background-image: url('../Content/Img/SliderHome/deadpool.jpg')">
+                <div class="content">
+                    <div class="name" style="color :#ff2020">DEADPOOL</div>
+                    <div class="des">Là một nhân vật phản anh hùng xuất hiện trong bộ truyện tranh Mỹ được xuất bản bởi Marvel Comics</div>
+                    <button>Xem thêm</button>
+                </div>
+            </div>
+            <div class="item" style="background-image: url('../Content/Img/SliderHome/dgag542-e3776f0c-3cca-4ce7-b683-672fd79f8455.jpg');">
+                <div class="content">
+                    <div class="name" style="color :#ff2020">Jujutsu Kaisen</div>
+                    <div class="des">Là một bộ truyện tranh Nhật Bản được sáng tác và minh họa bởi Akutami Gege</div>
+                    <button>Xem thêm</button>
+                </div>
+            </div>
+            <div class="item" style="background-image: url('../Content/Img/SliderHome/gear-5-luffy-one-piece.png');">
+                <div class="content">
+                    <div class="name" style="color :#ff2020">One Piece</div>
+                    <div class="des" style="color :#ff6a00">Từng được xuất bản tại Việt Nam dưới tên gọi Đảo Hải Tặc là bộ manga dành cho lứa tuổi thiếu niên của tác giả Oda Eiichiro</div>
+                    <button>Xem thêm</button>
+                </div>
+            </div>
+            <div class="item" style="background-image: url('../Content/Img/SliderHome/Oppenheimer_new_trailer_bhagwad.png');">
+                <div class="content">
+                    <div class="name" style="color:#ff2020;font-size:30px;">OPPENHEIMER</div>
+                    <div class="des">Là một bộ phim điện ảnh Anh – Mỹ thuộc thể loại tiểu sử – tâm lý – chính kịchra mắt vào năm 2023 do Christopher Nolan làm đạo diễn</div>
+                    <button>Xem thêm</button>
+                </div>
+            </div>
+            <div class="item" style="background-image: url('../Content/Img/SliderHome/phim-marvel-ra-mat-trong-2-nam-toi.jpg');">
+                <div class="content">
+                    <div class="name" style="color :#ff2020">Vũ trụ Điện ảnh Marvel</div>
+                    <div class="des">Là một loạt các tác phẩm siêu anh hùng chiếu trên màn ảnh rộng</div>
+                    <button>Xem thêm</button>
+                </div>
+            </div>
+            <div class="item" style="background-image: url('../Content/Img/SliderHome/spider man.jpg');">
+                <div class="content">
+                    <div class="name" style="color :#ff2020">SPIDERMAN<br /> NO WAY HOME</div>
+                    <div class="des" style="color:#ff6a00">Là một bộ phim siêu anh hùng năm 2021 của Mỹ dựa trên nhân vật Peter Parker của Marvel Comics</div>
+                    <button>Xem thêm</button>
+                </div>
+            </div>
+            <div class="item" style="background-image: url('../Content/Img/SliderHome/top-20-phim-le-han-quoc-hay-nhat.png');">
+                <div class="content">
+                    <div class="name">THE MOON</div>
+                    <div class="des">Là một bộ phim điện ảnh Hàn Quốc thuộc thể loại thảm họa – tâm lý – chính kịch ra mắt vào năm 2023 do Kim Yong-hwa làm đạo diễn</div>
+                    <button>Xem thêm</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="button">
+            <button class="prev" style="width:0px;height:0px;border-radius:100px 20px 20px 100px"></button>
+            <button class="next" style="width: 0px; height: 0px;border-radius:20px 100px 100px 20px"></button>
+        </div>
+
+    </div>
+</div>
+<script>
+    let next = document.querySelector('.next')
+    let prev = document.querySelector('.prev')
+
+    next.addEventListener('click', function () {
+        let items = document.querySelectorAll('.item')
+        document.querySelector('.slide').appendChild(items[0])
+    })
+
+    prev.addEventListener('click', function () {
+        let items = document.querySelectorAll('.item')
+        document.querySelector('.slide').prepend(items[items.length - 1]) // here the length of items = 6
+    })
+</script>

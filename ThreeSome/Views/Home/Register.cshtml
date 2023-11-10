@@ -1,4 +1,5 @@
 ﻿@{
+    ViewBag.Title = "Register";
     Layout = "~/Views/Shared/_FilmLayout.cshtml";
 }
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
@@ -9,17 +10,17 @@
     <input class="name" type="text" name="user-name" placeholder="UserName" required/>
     <input class="name" type="password" name="password" placeholder="Password" required />
     <div class="name1">
-        <input class="name" type="email" name="email" placeholder="Email" required/>
+        <input class="name" type="email" name="email" placeholder="Email" required />
         <input class="name" type="text" name="firstname" placeholder="FirstName" required />
-        <input class="name" type="text" name="lastname" placeholder="LastName" required/>
-        <input class="name" type="date" name="birthdate"style="color:white" placeholder="Birthdate" required/>
+        <input class="name" type="text" name="lastname" placeholder="LastName" required />
+        <input class="name" type="date" name="birthdate" style="color:white" placeholder="Birthdate" required />
         <input class="name" type="number" name="phone" placeholder="Phone" />
         <select class="name" name="gioitinh">
             <option value="" style="color:white">Giới Tính</option>
             <option value="nam">Nam</option>
             <option value="nu">Nữ</option>
         </select>
-        
+
     </div>
     <button type="submit" class="register-regispage">Register</button>
     <a href="Login"><button class="login-regispage">Login</button></a>

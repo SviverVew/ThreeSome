@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b279f8a085a442aabebcc2ddafc171e3" Name="Diagram1">
+        <EntityTypeShape EntityType="WEBEntitiesModel.AdminTable" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEBEntitiesModel.espisode" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEBEntitiesModel.favorite" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEBEntitiesModel.Film" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEBEntitiesModel.genre" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEBEntitiesModel.UserTable" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <AssociationConnector Association="WEBEntitiesModel.FK__espisode__film_I__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="WEBEntitiesModel.FK__favorite__episod__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="WEBEntitiesModel.FK__favorite__userID__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="WEBEntitiesModel.FK__genre__film_ID__300424B4" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

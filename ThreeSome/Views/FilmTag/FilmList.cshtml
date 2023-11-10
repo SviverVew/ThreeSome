@@ -1,0 +1,26 @@
+﻿@model IEnumerable<ThreeSome.Models.FilmModel>
+
+@{
+    ViewBag.Title = "FilmList";
+    Layout = "~/Views/Shared/_FilmLayout.cshtml";
+}
+
+<link href="~/Content/Css/trending.css" rel="stylesheet" />
+<div class="container">
+    <h2>Danh sách phim</h2>
+    <div class="row" style="margin:30px">
+        @foreach (var item in Model)
+        {
+            <div class="col" >
+                <a  style="text-decoration:none; color:black" href="@Url.Action("FilmDetail", "FilmTag", new { area = "" })?FilmID=@item.FilmID">
+                    <img class="size-img" style="object-fit: cover;" src="@Url.Content(item.FilmImg)" />
+                    <h3 class="card-title">@item.FilmTitle</h3>
+                    <p class="card-title-view">
+                        @item.FilmID
+                    </p>
+                </a>
+            </div>
+        }
+    </div>
+</div>
+

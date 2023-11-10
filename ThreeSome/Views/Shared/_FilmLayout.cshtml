@@ -2,68 +2,79 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@ViewBag.Title</title>
+
+    <link rel="icon" type="image/svg" href="~/Content/Img/3sumteam.png" />
     <link href="~/Content/Css/Main.css" rel="stylesheet" />
+    <link href="~/Content/Css/Responsive.css" rel="stylesheet" />
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <style>
-        .content {
-            display: flex;
-            flex-direction:  column;
-            justify-content:center;
-            min-height: 500px;
-            width:100%;
-            padding-top: 40px;
-            padding-left:50px;
-            padding-right:50px;
-            padding-bottom:100px;
-            overflow-x: hidden;
-        }
 
-        .footer {
-            width: 100%;
-            height: 300px;
-            clear: both;
-            background-color: #1b1b1b;
-            border-top: 10px solid #3d3d3d;
-            margin-top: -4px;
-            padding-top: 50px;
-            padding-left: 200px;
-        }
-    </style>
 </head>
 <body>
     <div class="main">
         <div class="div-header">
-            <a href="About"><img id="logo" src="~/Content/Img/3sumteam.png" /></a>
+            <a href="@Url.Action("Index", "Home", new { area = "" })"><img id="logo" src="~/Content/Img/3sumteam.png" /></a>
             <div class="search">
-                <input type="text" name="search-bar" id="search-bar"  placeholder="Search" />
-                <button  id="search-button" ><ion-icon name="search"></ion-icon></button>
+                <label for="search-bar"><input type="text" name="search-bar" id="search-bar" placeholder="Search" /></label>
+                <label for="search"><button id="search-button"><ion-icon name="search"></ion-icon></button></label>
             </div>
-            <nav class="nav">
-                <a class="a1" href="Index">Home</a>
-                <a class="a1" href="Trending">Trending</a>
-                <a class="a1" href="Genre">Genre</a>
-                <a class="a1" href="Favorite">Favorite</a>
-                <a class="a1" href="About">About</a>
-                <button class="bt" onclick="window.location.href='Login '">Login</button>
-            </nav>
-        </div>
-        <div class="content">
-            @RenderBody()
-        </div>
 
-        <footer>
-            <div class="footer">
-                <h3 style="color: #808080 ">Liên Hệ </h3>
-                <a class="a2" href="About">About</a><br />
-                <a class="a2" href="#">Contact</a>
-                <br />
-                <br />
-                <h5  style="color:#808080">©NoCopyright - Nhóm ăn ba tô cơm</h5>
+            <nav class="nav">
+                <a class="a1" id="tren" href="@Url.Action("Trending", "Home", new { area = "" })">Trending</a>
+                <a class="a1" id="gen" href="@Url.Action("Genre", "Home", new { area = "" })">Genre</a>
+                <a class="a1" id="fa" href="@Url.Action("Favorite", "Home", new { area = "" })">Favorite</a>
+                <a class="a1" id="ab" href="@Url.Action("About", "Home", new { area = "" })">About</a>
+                <a href=@Url.Action("Login","Home", new {area=""})>
+                    <button id="bt" class="bt">Login</button>
+                </a>
+            </nav>
+
+        </div>
+        <div class="wrapper">
+            <div class="content" style="display:flex;flex-direction:column;align-items:center;">
+                <h3 id="output" style="margin-bottom:50px; color:white"></h3>
+                @RenderBody()
             </div>
-        </footer>
+            <script>
+                let btn = document.getElementById('search-button');
+                let output = document.getElementById('output');
+
+                btn.addEventListener('click', () => {
+                    let search = document.getElementById('search-bar').value;
+                    output.innerText = `Bạn tìm kiếm: ${search}`;
+                });
+            </script>
+            <footer>
+                <div class="footer" id="footer">
+                    <h3 style="color: #808080 ">Liên Hệ </h3>
+                    <a class="a2" href="About">About</a><br />
+                    <a class="a2" href="#">Contact</a>
+                    <br />
+                    <br />
+                    <h5 style="color:#808080">©NoCopyright - Nhóm ăn ba tô cơm</h5>
+                </div>
+            </footer>
+        </div>
     </div>
+    <script>
+        const header = document.querySelector('.div-header');
+        let isCloseToThreshold = false;
+        const threshold = 1.5; // Khoảng cách ngưỡng
+
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > threshold && !isCloseToThreshold) {
+                isCloseToThreshold = true;
+                // Thực hiện các thay đổi khi gần đến ngưỡng
+                header.style.backgroundColor = 'transparent';
+                header.style.boxShadow = 'none';
+            } else if (window.scrollY <= threshold && isCloseToThreshold) {
+                isCloseToThreshold = false;
+                // Thực hiện các thay đổi khi không gần đến ngưỡng
+                header.style.backgroundColor = '#1e1e1e';
+            }
+        });
+    </script>
 </body>
 </html>
