@@ -37,6 +37,7 @@
     <Property Name="filmStatus" Type="nvarchar" MaxLength="15" Nullable="false" />
     <Property Name="filmLink" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="filmIMG" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="filmGenre" Type="int" />
   </EntityType>
   <EntityType Name="genre">
     <Key>
@@ -44,7 +45,6 @@
     </Key>
     <Property Name="genreID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="genreName" Type="nvarchar" MaxLength="30" Nullable="false" />
-    <Property Name="film_ID" Type="int" />
   </EntityType>
   <EntityType Name="UserTable">
     <Key>
@@ -59,7 +59,6 @@
     <Property Name="userEmail" Type="char" MaxLength="30" Nullable="false" />
     <Property Name="userPhone" Type="int" Nullable="false" />
     <Property Name="Sex" Type="nvarchar" MaxLength="4" />
-    <Property Name="MoneyCheck" Type="char" MaxLength="20" Nullable="false" />
     <Property Name="FavoriteVideo" Type="int" />
   </EntityType>
   <Association Name="FK__espisode__film_I__2D27B809">
@@ -98,15 +97,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__genre__film_ID__300424B4">
-    <End Role="Film" Type="Self.Film" Multiplicity="0..1" />
-    <End Role="genre" Type="Self.genre" Multiplicity="*" />
+  <Association Name="FK__Film__filmGenre__34C8D9D1">
+    <End Role="genre" Type="Self.genre" Multiplicity="0..1" />
+    <End Role="Film" Type="Self.Film" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Film">
-        <PropertyRef Name="filmID" />
+      <Principal Role="genre">
+        <PropertyRef Name="genreID" />
       </Principal>
-      <Dependent Role="genre">
-        <PropertyRef Name="film_ID" />
+      <Dependent Role="Film">
+        <PropertyRef Name="filmGenre" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -129,9 +128,9 @@
       <End Role="UserTable" EntitySet="UserTable" />
       <End Role="favorite" EntitySet="favorite" />
     </AssociationSet>
-    <AssociationSet Name="FK__genre__film_ID__300424B4" Association="Self.FK__genre__film_ID__300424B4">
-      <End Role="Film" EntitySet="Film" />
+    <AssociationSet Name="FK__Film__filmGenre__34C8D9D1" Association="Self.FK__Film__filmGenre__34C8D9D1">
       <End Role="genre" EntitySet="genre" />
+      <End Role="Film" EntitySet="Film" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

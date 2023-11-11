@@ -1,0 +1,75 @@
+﻿@model IEnumerable<ThreeSome.Models.Film>
+
+@{
+    ViewBag.Title = "Movie";
+    Layout = "~/Areas/ADMIN/Views/Shared/adminlayout.cshtml";
+}
+<style>
+    th{
+        font-size:0.9rem;
+    }
+</style>
+<p>
+    @Html.ActionLink("Create", "Create","Movie")
+</p>
+<table class="table" style="color:white">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.filmTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.filmDes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.filmEsp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.filmStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.filmLink)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.filmIMG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.filmGenre)
+        </th>
+        <th>
+            ACTION
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.filmTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.filmDes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.filmEsp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.filmStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.filmLink)
+        </td>
+        <td>
+			<img src="@Url.Content(item.filmIMG)" alt="Movie Thumbnail" style="height:10rem ; width:10rem">
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.filmGenre)
+        </td>
+		<td>
+			@Html.ActionLink("Edit", "Edit", new { id = item.filmID })
+			<br />
+			@Html.ActionLink("Details", "Details", new { id = item.filmID })
+			@Html.ActionLink("Delete", "Delete", new { id = item.filmID })
+		</td>
+    </tr>
+}
+
+</table>

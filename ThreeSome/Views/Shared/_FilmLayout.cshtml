@@ -23,12 +23,61 @@
 
             <nav class="nav">
                 <a class="a1" id="tren" href="@Url.Action("Trending", "Home", new { area = "" })">Trending</a>
-                <a class="a1" id="gen" href="@Url.Action("Genre", "Home", new { area = "" })">Genre</a>
-                <a class="a1" id="fa" href="@Url.Action("Favorite", "Home", new { area = "" })">Favorite</a>
+                @{
+                    Html.RenderAction("Index", "Gerne");
+                }
+                <a class="a1" id="fa" href="@Url.Action("Favorite", "Home", new { area = "" })">Yêu thích</a>
                 <a class="a1" id="ab" href="@Url.Action("About", "Home", new { area = "" })">About</a>
-                <a href=@Url.Action("Login","Home", new {area=""})>
-                    <button id="bt" class="bt">Login</button>
-                </a>
+                @{
+                    bool showLoginButton = Session["Username"] == null;
+                }
+                @if (Session["Username"] != null)
+                 {
+                    if(Session["Name"] == null) 
+                    {
+                    <a href="@Url.Action("Login","Login")">
+                        <button class="bt">LOGIN</button>
+                    </a>
+                    }
+                    else { 
+                    <div class="dropdown">
+                        <a href="#">
+                            <button class="bt">@Session["Name"]</button>
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="#">
+                                <button class="bt" style="">
+                                    <img src="~/Content/Img/user-solid.svg" height="15px" width="15px" />
+                                </button>
+                            </a>
+                            <a href="@Url.Action("ShowFav","Favourite")">
+                                <button class="bt">
+                                    <img src="~/Content/Img/heart-regular.svg" height="15px" width="15px" />
+                                </button>
+                            </a>
+                            <a href="@Url.Action("Logout","Login")">
+                                <button class="bt">
+                                    <img src="~/Content/Img/right-from-bracket-solid.svg" height="15px" width="15px" />
+                                </button>
+                            </a>
+                            @if (Session["Username"].ToString() == "admin")
+                               {
+                                <a href="@Url.Action("Admin","Admin", new {area = "ADMIN"})">
+                                    <button class="bt">
+                                        <img src="~/Content/Img/list-check-solid.svg" height="15px" width="15px" />
+                                    </button>
+                                </a>
+                                }
+                        </div>
+                    </div>
+                    }
+                }
+                else
+                {
+                    <a href="@Url.Action("Login","Login")">
+                        <button class="bt">LOGIN</button>
+                    </a>
+                }
             </nav>
 
         </div>

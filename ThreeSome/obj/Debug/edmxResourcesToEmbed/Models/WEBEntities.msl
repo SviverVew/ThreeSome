@@ -33,6 +33,7 @@
     <EntitySetMapping Name="Films">
       <EntityTypeMapping TypeName="WEBEntitiesModel.Film">
         <MappingFragment StoreEntitySet="Film">
+          <ScalarProperty Name="filmGenre" ColumnName="filmGenre" />
           <ScalarProperty Name="filmID" ColumnName="filmID" />
           <ScalarProperty Name="filmTitle" ColumnName="filmTitle" />
           <ScalarProperty Name="filmDes" ColumnName="filmDes" />
@@ -48,7 +49,6 @@
         <MappingFragment StoreEntitySet="genre">
           <ScalarProperty Name="genreID" ColumnName="genreID" />
           <ScalarProperty Name="genreName" ColumnName="genreName" />
-          <ScalarProperty Name="film_ID" ColumnName="film_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -64,7 +64,6 @@
           <ScalarProperty Name="userEmail" ColumnName="userEmail" />
           <ScalarProperty Name="userPhone" ColumnName="userPhone" />
           <ScalarProperty Name="Sex" ColumnName="Sex" />
-          <ScalarProperty Name="MoneyCheck" ColumnName="MoneyCheck" />
           <ScalarProperty Name="FavoriteVideo" ColumnName="FavoriteVideo" />
         </MappingFragment>
       </EntityTypeMapping>

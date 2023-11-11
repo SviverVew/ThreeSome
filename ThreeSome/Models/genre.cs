@@ -14,10 +14,16 @@ namespace ThreeSome.Models
     
     public partial class genre
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public genre()
+        {
+            this.Films = new HashSet<Film>();
+        }
+    
         public int genreID { get; set; }
         public string genreName { get; set; }
-        public Nullable<int> film_ID { get; set; }
     
-        public virtual Film Film { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Film> Films { get; set; }
     }
 }

@@ -11,8 +11,11 @@ namespace ThreeSome.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.Web;
+    using System.IO;
 
     public partial class UserTable
     {
@@ -24,20 +27,17 @@ namespace ThreeSome.Models
     
         public int userID { get; set; }
         public string userName { get; set; }
-        
         public string userPass { get; set; }
-       
         public string firstName { get; set; }
         public string lastName { get; set; }
         public Nullable<System.DateTime> userDate { get; set; }
         public string userEmail { get; set; }
         public int userPhone { get; set; }
         public string Sex { get; set; }
-        public string MoneyCheck { get; set; }
         public Nullable<int> FavoriteVideo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<favorite> favorites { get; set; } 
+        public virtual ICollection<favorite> favorites { get; set; }
         [NotMapped]
         [Compare("userPass")]
         [Required(ErrorMessage = "Not empty")]

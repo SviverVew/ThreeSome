@@ -15,22 +15,22 @@ namespace ThreeSome.Controllers
         {
             return View();
         }
-        public ActionResult AuthenLogin(UserTable user)
+        public ActionResult AuthenLogin(string userName, string userPass)
         {
-            var check = db.UserTables.Where(u => u.userName.Equals(user.userName)
-            && u.userPass == user.userPass).FirstOrDefault();
-            Session["Username"] = user.userName;
-            Session["Password"] = user.userPass;
+            var userStore = db.UserTables.Where(u => u.userName==userName
+            && u.userPass == userPass).FirstOrDefault();
+           
             //Session["Userrole"] = user.userRole;
-            if (check == null)
+            if (userStore == null)
             {
                 ViewBag.ErrorLog = "Bạn đã nhập sai username hoặc password";
                 return View("Login");
             }
             else
             {
-                var check_user = db.UserTables.FirstOrDefault(u => u.userName == user.userName);
-                return RedirectToAction("Homepage", "Home");
+                Session["Name"] = userStore.firstName;
+                Session["Username"] = userStore.userName;
+                return RedirectToAction("Index", "Home");
 
             }
         }
@@ -64,18 +64,19 @@ namespace ThreeSome.Controllers
                 {
                     db.UserTables.Add(user);
                     db.SaveChanges();
-                    return RedirectToAction("Login", "Login");
+                    return RedirectToAction("Login");
                 }
             }
-            catch
+            catch(Exception ex) 
             {
+
                 return View("Register");
             }
         }
         public ActionResult Logout()
         {
             Session.Clear();
-            return RedirectToAction("Homepage", "Home");
+            return RedirectToAction("Index", "Home");
         }
     }
 }

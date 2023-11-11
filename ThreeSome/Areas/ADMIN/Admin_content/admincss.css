@@ -1,0 +1,120 @@
+﻿* {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-image: url('img/background.jpg');
+}
+
+#top-bar {
+	display: flex;
+	margin: 0;
+}
+
+/* CSS cho thanh nav bên trái */
+.nav-bar {
+	width: 40%;
+	height: 100%;
+	border-block: 10px 10px
+}
+
+.navbar-sidebar {
+	/* Độ rộng của thanh nav */
+	position: fixed;
+	height: calc(100%);
+	/* Màu nền ban đầu */
+	background-color: none;
+	box-shadow: black 0 0 5px;
+	backdrop-filter: blur(15px);
+	color: white; /* Màu chữ ban đầu */
+	margin-right: 50px;
+	margin-top: -12px;
+}
+
+/* CSS cho danh sách ul */
+.list-nav {
+	list-style: none;
+	padding: 0px;
+	margin-top: 0px;
+}
+
+	/* CSS cho các mục danh sách li */
+	.list-nav li {
+		padding: 0.063rem;
+		margin: 0;
+		align-items: center
+	}
+
+		/* CSS khi hover */
+		.list-nav li:hover {
+			background-color: #9899a1; /* Màu nền khi hover */
+			color: #fff; /* Màu chữ khi hover */
+			transition: 0.3s;
+			border-radius: 0.313rem;
+		}
+
+		/* CSS cho các li có thẻ a */
+		.list-nav li a {
+			color: inherit;
+			text-decoration: none;
+			padding: 1.25rem;
+		}
+
+	.list-nav li {
+		margin-top: 0.938rem;
+	}
+
+		/* CSS cho biểu tượng (FontAwesome) trong thẻ a */
+		.list-nav li a i {
+			margin-right: 0.625rem;
+		}
+
+.top {
+	height: calc(10%);
+	text-align: center;
+	padding: 0.313px;
+	background-color: none;
+	box-shadow: black 0 0 5px;
+	backdrop-filter: blur(15px);
+	position: fixed;
+	left: 14.2rem;
+	width: 100%;
+}
+
+.admin {
+	margin-top: 0.438rem;
+	color: #c9c5c5;
+}
+
+.noidung {
+	padding-top: 5em;
+	float: right;
+	width: 84%;
+	height: 100%;
+}
+
+.Content {
+	display: flex;
+	flex-direction: row;
+	width: calc(100%);
+}
+
+.but {
+	width: 130px;
+	height: 50px;
+	background-color: transparent;
+	border: 2px solid #ffffff;
+	outline: none;
+	border-radius: 10px;
+	margin-left: 40px;
+	color: white;
+	transition: 0.7s;
+}
+
+	.but:hover {
+		background: center white;
+		color: dimgray;
+	}

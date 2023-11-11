@@ -42,7 +42,8 @@
     <Property Name="filmLink" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="filmIMG" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="espisodes" Relationship="Self.FK__espisode__film_I__2D27B809" FromRole="Film" ToRole="espisode" />
-    <NavigationProperty Name="genres" Relationship="Self.FK__genre__film_ID__300424B4" FromRole="Film" ToRole="genre" />
+    <Property Name="filmGenre" Type="Int32" />
+    <NavigationProperty Name="genre" Relationship="WEBEntitiesModel.FK__Film__filmGenre__34C8D9D1" FromRole="Film" ToRole="genre" />
   </EntityType>
   <EntityType Name="genre">
     <Key>
@@ -50,8 +51,7 @@
     </Key>
     <Property Name="genreID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="genreName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="film_ID" Type="Int32" />
-    <NavigationProperty Name="Film" Relationship="Self.FK__genre__film_ID__300424B4" FromRole="genre" ToRole="Film" />
+    <NavigationProperty Name="Films" Relationship="WEBEntitiesModel.FK__Film__filmGenre__34C8D9D1" FromRole="genre" ToRole="Film" />
   </EntityType>
   <EntityType Name="UserTable">
     <Key>
@@ -66,7 +66,6 @@
     <Property Name="userEmail" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="userPhone" Type="Int32" Nullable="false" />
     <Property Name="Sex" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
-    <Property Name="MoneyCheck" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="FavoriteVideo" Type="Int32" />
     <NavigationProperty Name="favorites" Relationship="Self.FK__favorite__userID__2A4B4B5E" FromRole="UserTable" ToRole="favorite" />
   </EntityType>
@@ -106,18 +105,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__genre__film_ID__300424B4">
-    <End Role="Film" Type="Self.Film" Multiplicity="0..1" />
-    <End Role="genre" Type="Self.genre" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Film">
-        <PropertyRef Name="filmID" />
-      </Principal>
-      <Dependent Role="genre">
-        <PropertyRef Name="film_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="WEBEntitiesEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="AdminTables" EntityType="Self.AdminTable" />
     <EntitySet Name="espisodes" EntityType="Self.espisode" />
@@ -137,9 +124,21 @@
       <End Role="UserTable" EntitySet="UserTables" />
       <End Role="favorite" EntitySet="favorites" />
     </AssociationSet>
-    <AssociationSet Name="FK__genre__film_ID__300424B4" Association="Self.FK__genre__film_ID__300424B4">
-      <End Role="Film" EntitySet="Films" />
+    <AssociationSet Name="FK__Film__filmGenre__34C8D9D1" Association="WEBEntitiesModel.FK__Film__filmGenre__34C8D9D1">
       <End Role="genre" EntitySet="genres" />
+      <End Role="Film" EntitySet="Films" />
     </AssociationSet>
   </EntityContainer>
+  <Association Name="FK__Film__filmGenre__34C8D9D1">
+    <End Type="WEBEntitiesModel.genre" Role="genre" Multiplicity="0..1" />
+    <End Type="WEBEntitiesModel.Film" Role="Film" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="genre">
+        <PropertyRef Name="genreID" />
+      </Principal>
+      <Dependent Role="Film">
+        <PropertyRef Name="filmGenre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

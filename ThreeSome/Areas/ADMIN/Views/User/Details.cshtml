@@ -1,0 +1,90 @@
+﻿@model ThreeSome.Models.UserTable
+
+@{
+    ViewBag.Title = "Thông tin người dùng";
+    Layout = "~/Areas/ADMIN/Views/Shared/adminlayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>USER</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.userName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userPass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userPass)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.firstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.firstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userRole)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userRole)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sex)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sex)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.userID }) |
+    @Html.ActionLink("Back to List", "UserList")
+</p>

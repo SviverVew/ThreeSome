@@ -1,0 +1,78 @@
+﻿@model ThreeSome.Models.Film
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/ADMIN/Views/Shared/adminlayout.cshtml";
+}
+
+<div>
+    <h4>FILM</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.filmTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.filmTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.filmDes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.filmDes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.filmEsp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.filmEsp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.filmStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.filmStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.filmLink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.filmLink)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.filmIMG)
+        </dt>
+
+        <dd>
+			<img src="@Url.Content(Model.filmIMG)" style="height:10rem; width:10rem" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.filmGenre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.filmGenre)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

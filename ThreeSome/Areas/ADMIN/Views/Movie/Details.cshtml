@@ -1,0 +1,72 @@
+﻿@model ThreeSome.Models.Film
+
+@{
+    ViewBag.Title = "Thông tin phim";
+    Layout = "~/Areas/ADMIN/Views/Shared/adminlayout.cshtml";
+}
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.filmTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.filmTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.filmDes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.filmDes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.filmEsp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.filmEsp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.filmStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.filmStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.filmLink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.filmLink)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.filmIMG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.filmIMG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.filmGenre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.filmGenre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.filmID }) |
+    @Html.ActionLink("Back to List", "Movie")
+</p>

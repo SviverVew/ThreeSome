@@ -129,8 +129,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\ADMIN\ADMINAreaRegistration.cs" />
+    <Compile Include="Areas\ADMIN\Controllers\AdminController.cs" />
+    <Compile Include="Areas\ADMIN\Controllers\GenreController.cs" />
+    <Compile Include="Areas\ADMIN\Controllers\MovieController.cs" />
+    <Compile Include="Areas\ADMIN\Controllers\UserController.cs" />
     <Compile Include="Controllers\FavouriteController.cs" />
     <Compile Include="Controllers\FilmTagController.cs" />
+    <Compile Include="Controllers\GerneController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PlayMovieController.cs" />
@@ -176,6 +182,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\ADMIN\Admin_content\admincss.css" />
+    <Content Include="Areas\ADMIN\Admin_content\IMG\background.jpg" />
     <Content Include="Content\Bootstrap\bootstrap-grid.css" />
     <Content Include="Content\Bootstrap\bootstrap-grid.min.css" />
     <Content Include="Content\Bootstrap\bootstrap-grid.rtl.css" />
@@ -236,6 +244,23 @@
     <Content Include="Models\WEBEntities.edmx.diagram">
       <DependentUpon>WEBEntities.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\ADMIN\Views\Admin\Admin.cshtml" />
+    <Content Include="Areas\ADMIN\Views\Genre\Create.cshtml" />
+    <Content Include="Areas\ADMIN\Views\Genre\Delete.cshtml" />
+    <Content Include="Areas\ADMIN\Views\Genre\Edit.cshtml" />
+    <Content Include="Areas\ADMIN\Views\Genre\Genre.cshtml" />
+    <Content Include="Areas\ADMIN\Views\Movie\Create.cshtml" />
+    <Content Include="Areas\ADMIN\Views\Movie\Delete.cshtml" />
+    <Content Include="Areas\ADMIN\Views\Movie\Details.cshtml" />
+    <Content Include="Areas\ADMIN\Views\Movie\Edit.cshtml" />
+    <Content Include="Areas\ADMIN\Views\Movie\Movie.cshtml" />
+    <Content Include="Areas\ADMIN\Views\Shared\adminlayout.cshtml" />
+    <Content Include="Areas\ADMIN\Views\User\Create.cshtml" />
+    <Content Include="Areas\ADMIN\Views\User\Delete.cshtml" />
+    <Content Include="Areas\ADMIN\Views\User\Details.cshtml" />
+    <Content Include="Areas\ADMIN\Views\User\Edit.cshtml" />
+    <Content Include="Areas\ADMIN\Views\User\UserList.cshtml" />
+    <Content Include="Areas\ADMIN\Views\web.config" />
     <None Include="Scripts\Bootstrap\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\Bootstrap\jquery-3.4.1.js" />
     <Content Include="Scripts\Bootstrap\jquery-3.4.1.min.js" />
@@ -262,17 +287,18 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_FilmLayout.cshtml" />
-    <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Trending.cshtml" />
-    <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\PlayMovie\Video.cshtml" />
     <Content Include="Views\FilmTag\FilmList.cshtml" />
     <Content Include="Views\FilmTag\FilmDetail.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Login\Register.cshtml" />
+    <Content Include="Views\Gerne\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\ADMIN\Data\" />
     <Folder Include="Views\Favourite\" />
-    <Folder Include="Views\Login\" />
     <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>

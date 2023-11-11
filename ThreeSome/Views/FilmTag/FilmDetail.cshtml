@@ -11,14 +11,56 @@
         height: 300px;
         object-fit: cover;
     }
+
     .info-container {
-        
     }
+
     .dess {
-        
+        position:;
+        top: -200px;
+        margin-top: -100px;
     }
-    .anh-phim{
-         
+
+    .des-text {
+        color: white;
+        position: absolute;
+        width: 820px;
+        height: 686px;
+        transition: 0.9s;
+        background: linear-gradient(90deg,#181818 10%,hsla(0,0%,9%,.98) 20%,hsla(0,0%,9%,.97) 25%,hsla(0,0%,9%,.95) 35%,hsla(0,0%,9%,.94) 40%,hsla(0,0%,9%,.92) 45%,hsla(0,0%,9%,.9) 50%,hsla(0,0%,9%,.87) 55%,hsla(0,0%,9%,.82) 60%,hsla(0,0%,9%,.75) 65%,hsla(0,0%,9%,.63) 70%,hsla(0,0%,9%,.45) 75%,hsla(0,0%,9%,.27) 80%,hsla(0,0%,9%,.15) 85%,hsla(0,0%,9%,.08) 90%,hsla(0,0%,9%,.03) 95%,hsla(0,0%,9%,0));
+    }
+
+        .des-text:hover {
+            width: 1520px;
+            font-size:
+        }
+
+    .anh-phim {
+        object-fit: cover;
+        width: 1590px;
+        height: 686px;
+    }
+
+    .tieu-de {
+        font-size: 45px;
+        transform: translate(150px,200px);
+        color: red;
+        margin-bottom: 30px;
+    }
+
+    .mo-ta {
+        transform: translate(150px,200px );
+        font-size: 16px;
+        transition: 0.9s;
+    }
+
+    .des-text:hover .mo-ta {
+        font-size: 25px;
+    }
+
+    body {
+        background-image: none;
+        background-color: #000000;
     }
 </style>
 @if (ViewBag.ErrorMessage != null)
@@ -31,10 +73,13 @@ else if (Model.Any())
 {
 <span style="display:flex" class="info-container">
     <div class="dess">
-        <h3>@Model.First().FilmTitle</h3>
-        <p>@Model.First().FilmDes</p>
+        <div class="des-text">
+            <h3 class="tieu-de">@Model.First().FilmTitle
+            </h3>
+            <p class="mo-ta">@Model.First().FilmDes</p>
+        </div>
+        <img class="anh-phim" src="@Url.Content(Model.First().FilmImg)" />
     </div>
-    <img class="anh-phim" src="@Url.Content(Model.First().FilmImg)" />
 
 </span>
 }
@@ -44,12 +89,14 @@ else if (Model.Any())
         @foreach (var item in Model)
         {
 
-            <div class="col" style="margin:50px" >
+            <div class="col" style="margin:50px;color:white">
                 <img class="size-img" src="@Url.Content(item.VidIMG)" />
-                <h3 class="card-title">@item.VidTitle</h3>
-                <h1 class="card-title-view">
-                    @item.VidAddress
-                </h1>
+                <div class="box-video">
+                    <h3 class="card-title">@item.VidTitle</h3>
+                    <h1 class="card-title-view">
+                        @item.VidAddress
+                    </h1>
+                </div>
+                </div>
+                }
             </div>
-        }
-    </div>

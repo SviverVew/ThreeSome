@@ -3,6 +3,12 @@
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_FilmLayout.cshtml";
 }
+<style>
+    body {
+        background-image: none;
+        background-color: #000000;
+    }
+</style>
 <link href="~/Content/Css/Home.css" rel="stylesheet" />
 <!--Font Awesome CDN-->
 <div class="">
@@ -29,7 +35,7 @@
                 <div class="content">
                     <div class="name" style="color :#ff2020">One Piece</div>
                     <div class="des" style="color :#ff6a00">Từng được xuất bản tại Việt Nam dưới tên gọi Đảo Hải Tặc là bộ manga dành cho lứa tuổi thiếu niên của tác giả Oda Eiichiro</div>
-                    <button>Xem thêm</button>
+                    <a style="text-decoration:none; color:black" href="@Url.Action("FilmDetail", "FilmTag", new { area = "" })?FilmID=3"><button>Xem thêm</button></a>
                 </div>
             </div>
             <div class="item" style="background-image: url('../Content/Img/SliderHome/Oppenheimer_new_trailer_bhagwad.png');">
@@ -83,3 +89,23 @@
         document.querySelector('.slide').prepend(items[items.length - 1]) // here the length of items = 6
     })
 </script>
+<link href="~/Content/Css/trending.css" rel="stylesheet" />
+<h2 style=" line-height: 200px;color:white";>Danh sách phim</h2>
+<div class="container" style="background-color:#">
+    <div class="row" style="margin: 30px; transform: translate(250px,20px );">
+        @foreach (var item in Model)
+        {
+            <div class="box-video">
+                <div class="col">
+                    <a style="text-decoration:none;color:white" href="@Url.Action("FilmDetail", "FilmTag", new { area = "" })?FilmID=@item.FilmID">
+                        <img class="size-img" style="object-fit: cover;" src="@Url.Content(item.FilmImg)" />
+                        <h3 class="card-title">@item.FilmTitle</h3>
+                        <p class="card-title-view">
+                            @item.FilmID
+                        </p>
+                    </a>
+                </div>
+                </div>
+                }
+            </div>
+        </div>

@@ -1,0 +1,82 @@
+﻿@model ThreeSome.Models.Film
+
+@{
+    ViewBag.Title = "Tạo phim mới";
+    Layout = "~/Areas/ADMIN/Views/Shared/adminlayout.cshtml";
+}
+<link href="~/Areas/ADMIN/Admin_content/admincss.css" rel="stylesheet" />
+@using (Html.BeginForm("Create","Movie",FormMethod.Post, new { enctype = "multipart/form-data" })) 
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <!--FILM TITLE-->
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.filmTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.filmTitle, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.filmTitle, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <!--FILM DESCRIPTION-->
+        <div class="form-group">
+            @Html.LabelFor(model => model.filmDes, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.filmDes, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.filmDes, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <!--FILM ESPISODE-->
+        <div class="form-group">
+            @Html.LabelFor(model => model.filmEsp, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.filmEsp, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.filmEsp, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <!--FILM STATUS-->
+        <div class="form-group">
+            @Html.LabelFor(model => model.filmStatus, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.filmStatus, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.filmStatus, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <!--FILM LINK-->
+        <div class="form-group">
+            @Html.LabelFor(model => model.filmLink, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.filmLink, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.filmLink, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <!--FILM IMG-->
+        <div class="form-group">
+            @Html.LabelFor(model => model.filmIMG, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.filmIMG, new { htmlAttributes = new { @class = "form-control" } })
+				<br />
+				<input type="file" name="IMGupload"  style="margin:1em;" />
+				@Html.ValidationMessageFor(model => model.filmIMG, "", new { @class = "text-danger" })
+			</div>
+        </div>
+        <!--FILM GENRE-->
+        <div class="form-group">
+            @Html.LabelFor(model => model.filmGenre, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.filmGenre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.filmGenre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <!--SUBMIT-->
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Movie")
+</div>

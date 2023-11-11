@@ -1,0 +1,103 @@
+﻿@model ThreeSome.Models.UserTable
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_FilmLayout.cshtml";
+}
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+@*icon:<ion-icon name="person-outline"></ion-icon> *@
+<link href="~/Content/Css/Login-Register.css" rel="stylesheet" />
+@using (Html.BeginForm("AuthenRegister", "Login", FormMethod.Post))
+{
+    <div class="register-page">
+        <table>
+            <!--------USERNAME-------->
+            <tr>
+                <td>@Html.TextBoxFor(s => s.userName, new { @class = "name", placeholder = "Username" })</td>
+            </tr>
+            <tr>
+                <td style="text-align:center">
+                    @Html.ValidationMessageFor(m => m.userName)
+                </td>
+            </tr>
+            @if (ViewBag.ErrName != null)
+            {
+                <tr>
+                    <td>
+                        <h5>@ViewBag.ErrName</h5>
+                    </td>
+                </tr>
+            }
+            <!--------PASS-------->
+            <tr>
+                <td>@Html.PasswordFor(s => s.userPass, new { @class = "name", placeholder = "Password" })</td>
+            </tr>
+            <tr>
+                <td style="text-align:center">
+                    @Html.ValidationMessageFor(model => model.userPass, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+
+            <!--------Repass-------->
+            <tr>
+                <td>@Html.PasswordFor(s => s.userRepass, new { @class = "name", placeholder = "Repassword" })</td>
+            </tr>
+            <tr>
+                <td style="text-align:center">
+                    @Html.ValidationMessageFor(model => model.userPass, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            @if (ViewBag.ErrPass != null)
+            {
+                <tr>
+                    <td>
+                        <h5>@ViewBag.ErrPass</h5>
+                    </td>
+                </tr>
+            }
+            <!--EMAIL-->
+            <tr>
+                <td>@Html.TextBoxFor(s => s.userEmail, new { @class = "name", placeholder = "Email" })</td>
+            </tr>
+            <tr>
+                <td style="text-align:center">
+                    @Html.ValidationMessageFor(m => m.userEmail)
+                </td>
+            </tr>
+            @if (ViewBag.ErrEmail != null)
+            {
+                <tr>
+                    <td>
+                        <h5>@ViewBag.ErrEmail</h5>
+                    </td>
+                </tr>
+            }
+            <!--FIRST NAME-->
+            <tr>
+                <td>@Html.TextBoxFor(s => s.firstName, new { @class = "name", placeholder = "Họ" })</td>
+            </tr>
+            <tr>
+                <td style="text-align:center">
+                    @Html.ValidationMessageFor(m => m.firstName)
+                </td>
+            </tr>
+            <!--LAST NAME-->
+            <tr>
+                <td>@Html.TextBoxFor(s => s.lastName, new { @class = "name", placeholder = "Tên" })</td>
+            </tr>
+            <tr>
+                <td style="text-align:center">
+                    @Html.ValidationMessageFor(m => m.lastName)
+                </td>
+            </tr>
+            <!--SUBMIT-->
+            <tr>
+                <td>
+                    <input type="submit" class="register-regispage" value="REGISTER" />
+                </td>
+            </tr>
+        </table>
+    </div>
+}
+

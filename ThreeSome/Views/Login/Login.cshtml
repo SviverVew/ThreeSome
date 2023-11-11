@@ -1,0 +1,42 @@
+﻿@model ThreeSome.Models.UserTable
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_FilmLayout.cshtml";
+}
+
+<script src="~/Scripts/login-regis/login.js"></script>
+<link href="~/Content/Css/Login-Register.css" rel="stylesheet" />
+
+@using (Html.BeginForm("AuthenLogin", "Login", FormMethod.Post))
+{
+    <div class="login-page">
+        <table>
+            <tr>
+                <td>@Html.TextBoxFor(s => s.userName, new { @class = "user-name", placeholder = "Tên đăng nhập" })</td>
+            </tr>
+            <tr>
+                <td>@Html.TextBoxFor(s => s.userPass, new { @class = "password-login", placeholder = "Mật khẩu" })</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="LOGIN" class="login" />
+                    <div style="text-align:center;color:red">
+                        @if (ViewBag.ErrorLog != null)
+                        {
+                            <h5>@ViewBag.ErrorLog</h5>
+                        }
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align:center">
+                    <a href="@Url.Action("Register", "Login")">
+                        <input type="button" value="REGISTER" class="register" />
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+}
+

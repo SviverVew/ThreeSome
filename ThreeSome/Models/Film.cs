@@ -11,14 +11,17 @@ namespace ThreeSome.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Web;
+    using System.IO;
     public partial class Film
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Film()
         {
             this.espisodes = new HashSet<espisode>();
-            this.genres = new HashSet<genre>();
         }
     
         public int filmID { get; set; }
@@ -28,10 +31,12 @@ namespace ThreeSome.Models
         public string filmStatus { get; set; }
         public string filmLink { get; set; }
         public string filmIMG { get; set; }
+        public Nullable<int> filmGenre { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<espisode> espisodes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<genre> genres { get; set; }
+        public virtual genre genre { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase IMGupload { get; set; }
     }
 }

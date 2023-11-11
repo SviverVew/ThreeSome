@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ThreeSome.Models.genre>
+
+@{
+    ViewBag.Title = "Thể loại";
+    Layout = "~/Areas/ADMIN/Views/Shared/adminlayout.cshtml";
+}
+<p>
+    @Html.ActionLink("Tạo mới thể loại", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.genreID)
+        </th>
+		<th>
+            @Html.DisplayNameFor(model => model.genreName)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+	<tr>
+		<td>
+			@Html.DisplayFor(modelItem => item.genreID)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.genreName)
+		</td>
+		<td>
+			@Html.ActionLink("Edit", "Edit", new { id = item.genreID }) |
+			@Html.ActionLink("Delete", "Delete", new { id = item.genreID })
+		</td>
+	</tr>
+}
+
+</table>
