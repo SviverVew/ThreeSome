@@ -11,7 +11,6 @@
         height: 300px;
         object-fit: cover;
     }
-
     .info-container {
     }
 
@@ -71,32 +70,44 @@
 }
 else if (Model.Any())
 {
-<span style="display:flex" class="info-container">
-    <div class="dess">
-        <div class="des-text">
-            <h3 class="tieu-de">@Model.First().FilmTitle
-            </h3>
-            <p class="mo-ta">@Model.First().FilmDes</p>
+    <span style="display:flex" class="info-container">
+        <div class="dess">
+            <div class="des-text">
+                <h3 class="tieu-de">
+                    @Model.First().FilmTitle
+                </h3>
+                <p class="mo-ta">@Model.First().FilmDes</p>
+            </div>
+            <img class="anh-phim" src="@Url.Content(Model.First().FilmImg)" />
         </div>
-        <img class="anh-phim" src="@Url.Content(Model.First().FilmImg)" />
-    </div>
 
-</span>
+    </span>
 }
-    <h3 style="margin-top:300px">Danh sách các tập phim </h3>
-    <br />
-    <div class="container" style="display:flex">
-        @foreach (var item in Model)
+<h3 style="margin-top:300px;color:white">Danh sách các tập phim </h3>
+<br />
+<div class="container" style="display:flex">
+    @foreach (var item in Model)
+    {
+        if (@Session["Name"] == null)
         {
-
             <div class="col" style="margin:50px;color:white">
                 <img class="size-img" src="@Url.Content(item.VidIMG)" />
                 <div class="box-video">
                     <h3 class="card-title">@item.VidTitle</h3>
-                    <h1 class="card-title-view">
-                        @item.VidAddress
-                    </h1>
+
                 </div>
-                </div>
-                }
             </div>
+        }
+        else
+        {
+          <a href="@Url.Action("WatchMovie", "FilmTag", new { area = "" })?VidID=@item.VidId">
+            <div class="col" style="margin:50px;color:white">
+                <img class="size-img" src="@Url.Content(item.VidIMG)" />
+                <div class="box-video" style="text-decoration:none">
+                    <h3 class="card-title">@item.VidTitle</h3>
+                </div>
+            </div>
+        </a>
+        }
+    }
+</div>

@@ -17,13 +17,22 @@
         @foreach (var item in Model)
         {
             <div class="col" style="align-content:center" >
-                <a  style="text-decoration:none; color:white" href="@Url.Action("FilmDetail", "FilmTag", new { area = "" })?FilmID=@item.FilmID">
+                <a style="text-decoration:none; color:white" href="@Url.Action("FilmDetail", "FilmTag", new { area = "" })?FilmID=@item.FilmID">
                     <img class="size-img" style="object-fit: cover;" src="@Url.Content(item.FilmImg)" />
-                    <h3 style="color: white"  class="card-title">@item.FilmTitle</h3>
-                    <p style="color: white"  class="card-title-view">
-                        @item.FilmID
-                    </p>
-                </a>
+                    <h3 style="color: white" class="card-title">@item.FilmTitle</h3>
+                    @if (item.FilmCount != null)
+                    {
+                        <p style="color: white;font-size:15px" class="card-title-view">
+                            Tổng: @item.FilmCount tập
+                        </p>
+                    }
+                    else
+                    {
+                      <p style="color: white;font-size:15px" class="card-title-view">
+                      Tổng: Vẫn đang cập nhật số tập
+                     </p>
+                    }
+                    </a>
             </div>
         }
     </div>

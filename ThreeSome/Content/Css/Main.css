@@ -51,7 +51,7 @@ body {
     height:50px;
     width:350px;
 }
-#search-bar{
+#search_bar{
     width:85%;
     border-radius:50px 0px 0px 50px;    
     border:1px solid #3d3d3d;
@@ -61,7 +61,7 @@ body {
     color:white;
 
 }
-#search-button {
+#search_button {
     border:none;
     width: 15%;
     border-radius: 0px 50px 50px 0px;
@@ -71,10 +71,10 @@ body {
     outline:none;
     transition:background-color ease-in-out 0.2s;
 }
-    #search-button:active {
+    #search_button:active {
         background-color: #808080;
     }
-#search-bar:focus {
+#search_bar:focus {
     outline: none;
     border-color: white;
 }

@@ -16,10 +16,14 @@
     <div class="main">
         <div class="div-header">
             <a href="@Url.Action("Index", "Home", new { area = "" })"><img id="logo" src="~/Content/Img/3sumteam.png" /></a>
-            <div class="search">
-                <label for="search-bar"><input type="text" name="search-bar" id="search-bar" placeholder="Search" /></label>
-                <label for="search"><button id="search-button"><ion-icon name="search"></ion-icon></button></label>
-            </div>
+            
+                @using (Html.BeginForm("SearchResult", "Search", FormMethod.Post))
+                {<div class="search">
+                    <label for="search_bar"><input type="text" name="tukhoa" id="search_bar" onchange="onChangeSearch(this.value)" placeholder="Tìm Kiếm...." /></label>
+                    <label for="search"><button id="search_button" disabled><ion-icon name="search"></button></label>
+                 </div>
+                }
+            
 
             <nav class="nav" style="width:40%">
                 @{
@@ -78,15 +82,6 @@
                 <h3 id="output" style="margin-bottom:50px; color:white"></h3>
                 @RenderBody()
             </div>
-            <script>
-                let btn = document.getElementById('search-button');
-                let output = document.getElementById('output');
-
-                btn.addEventListener('click', () => {
-                    let search = document.getElementById('search-bar').value;
-                    output.innerText = `Bạn tìm kiếm: ${search}`;
-                });
-            </script>
             <footer>
                 <div class="footer" id="footer">
                     <h3 style="color: #808080 ">Liên Hệ </h3>
@@ -116,6 +111,16 @@
                 header.style.backgroundColor = '#1e1e1e';
             }
         });
+
+        function onChangeSearch(val) {
+            const tukhoa = document.getElementById('search_bar')
+            const searchButton = document.getElementById('search_button');
+            if (tukhoa.value) {
+                searchButton.removeAttribute('disabled');
+            } else {
+                searchButton.setAttribute('disabled','');
+            }
+        }
     </script>
 </body>
 </html>

@@ -1,0 +1,12 @@
+﻿@model ThreeSome.Models.FilmModel
+
+@{
+    ViewBag.Title = "WatchMovie";
+}
+
+<video controls="controls">
+    <source src="@Url.Content(Model.VidAddress)" />
+</video>
+<h1 class="MovieName" style="color:white">
+    @Model.VidTitle
+</h1>

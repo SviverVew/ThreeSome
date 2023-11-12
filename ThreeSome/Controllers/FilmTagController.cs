@@ -23,35 +23,58 @@ namespace ThreeSome.Controllers
                     FilmTitle=x.filmTitle,
                     FilmDes=x.filmDes,
                     FilmImg=x.filmIMG,
+                    FilmCount=x.SumEspisode
                 }
                 ).ToList();
             return View(filmModel);
         }
         public ActionResult FilmDetail(int FilmID)
         {
+            
             var film = db.Films.FirstOrDefault(x => x.filmID == FilmID);
-           
-            if (film == null)
+            if (film.filmID != FilmID)
             {
-                return View(ViewBag.ErrorLog = "Phim chuẩn bị phát hành") ;
+                return RedirectToAction("Index","Home") ;
             }
-
             List<espisode> espisodes = db.espisodes.Where(x => x.film_ID == FilmID).ToList();
             var VidModel = espisodes.Select(
                 x => new FilmModel
                 {
-                    VidTitle = $"{x.Film.filmTitle}: Tập {x.vidID}",
+                    VidTitle = $"{x.Film.filmTitle}: Tập {x.Espisode1}",
                     VidIMG= x.vidIMG,
+                    VidId=x.vidID,
                 }
                 ).ToList();
             // Gán thông tin của bộ phim cho phần tử đầu tiên trong VidModel
 
             if (VidModel.Any())
             {
-                VidModel.First().FilmImg = film.filmIMG;
+            VidModel.First().FilmImg = film.filmIMG;
             VidModel.First().FilmTitle = film.filmTitle;
             VidModel.First().FilmDes = film.filmDes;
             }
+            return View(VidModel);
+
+        }
+        public ActionResult WatchMovie(int VidID)
+        {
+            // Tìm video dựa trên VidID
+            var vid = db.espisodes.FirstOrDefault(x => x.vidID == VidID);
+            // Lấy thông tin bộ phim từ video
+            var Filmss = vid.film_ID;
+            var film = db.Films.FirstOrDefault(x => x.filmID == Filmss);
+            // Tạo một đối tượng VidModel và gán thông tin của video và bộ phim cho nó
+            var VidModel = new FilmModel
+            {
+                VidTitle = $"{film.filmTitle}: Tập {vid.Espisode1}",
+                VidIMG = vid.vidIMG,
+                VidAddress = vid.vidAddress,
+                FilmImg = film.filmIMG,
+                FilmTitle = film.filmTitle,
+                FilmDes = film.filmDes
+            };
+            // Tìm các tập phim liên quan có cùng film_ID với bộ phim
+            var relatedEpisodes = db.espisodes.Where(x => x.film_ID == film.filmID).ToList();
             return View(VidModel);
 
         }

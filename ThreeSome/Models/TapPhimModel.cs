@@ -9,5 +9,7 @@ namespace ThreeSome.Models
     {
         public string TapPhimTitle { get; set; }
         public string TapPhimImage { get; set; }
+        public int TapPhimCount { get; set;}
+        public int TapPhimID { get; set; }
     }
 }
