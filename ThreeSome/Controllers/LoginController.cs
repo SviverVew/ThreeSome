@@ -23,11 +23,14 @@ namespace ThreeSome.Controllers
             //Session["Userrole"] = user.userRole;
             if (userStore == null)
             {
-                ViewBag.ErrorLog = "Bạn đã nhập sai username hoặc password";
+                ViewBag.ErrorLog = "Bạn đã nhập sai UserName hoặc PassWord";
                 return View("Login");
             }
             else
             {
+                Session["Email"] = userStore.userEmail;
+                Session["LastName"] = userStore.lastName;
+                Session["Role"] = userStore.userRole;
                 Session["Name"] = userStore.firstName;
                 Session["Username"] = userStore.userName;
                 return RedirectToAction("Index", "Home");
@@ -72,6 +75,10 @@ namespace ThreeSome.Controllers
 
                 return View("Register");
             }
+        }
+        public ActionResult ProfileUser()
+        {
+            return View();
         }
         public ActionResult Logout()
         {

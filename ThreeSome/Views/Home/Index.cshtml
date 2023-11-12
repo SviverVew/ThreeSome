@@ -76,9 +76,14 @@
     </div>
 </div>
 <script>
+   
+    // Xử lý sự kiện click nút next và prev 
     let next = document.querySelector('.next')
     let prev = document.querySelector('.prev')
-
+    // Hàm tự động ấn vào nút "next" sau mỗi 2 giây
+    setInterval(function () {
+        next.click();
+    }, 4000);
     next.addEventListener('click', function () {
         let items = document.querySelectorAll('.item')
         document.querySelector('.slide').appendChild(items[0])

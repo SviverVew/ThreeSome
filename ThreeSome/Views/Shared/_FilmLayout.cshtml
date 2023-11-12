@@ -21,8 +21,7 @@
                 <label for="search"><button id="search-button"><ion-icon name="search"></ion-icon></button></label>
             </div>
 
-            <nav class="nav">
-                <a class="a1" id="tren" href="@Url.Action("Trending", "Home", new { area = "" })">Trending</a>
+            <nav class="nav" style="width:40%">
                 @{
                     Html.RenderAction("Index", "Gerne");
                 }
@@ -32,50 +31,43 @@
                     bool showLoginButton = Session["Username"] == null;
                 }
                 @if (Session["Username"] != null)
-                 {
-                    if(Session["Name"] == null) 
+                {
+                    if (Session["Name"] == null)
                     {
-                    <a href="@Url.Action("Login","Login")">
-                        <button class="bt">LOGIN</button>
-                    </a>
-                    }
-                    else { 
-                    <div class="dropdown">
-                        <a href="#">
-                            <button class="bt">@Session["Name"]</button>
+                        <a href="@Url.Action("Login","Login")">
+                            <button class="bt" style="margin-left: 70px">LOGIN</button>
                         </a>
-                        <div class="dropdown-content">
+                    }
+                    else
+                    {
+                        <div class="dropdown">
                             <a href="#">
-                                <button class="bt" style="">
-                                    <img src="~/Content/Img/user-solid.svg" height="15px" width="15px" />
-                                </button>
+                                <button class="bt" style="font-size: 20px; margin-left: 70px ">@Session["Name"]</button>
                             </a>
-                            <a href="@Url.Action("ShowFav","Favourite")">
-                                <button class="bt">
-                                    <img src="~/Content/Img/heart-regular.svg" height="15px" width="15px" />
-                                </button>
-                            </a>
-                            <a href="@Url.Action("Logout","Login")">
-                                <button class="bt">
-                                    <img src="~/Content/Img/right-from-bracket-solid.svg" height="15px" width="15px" />
-                                </button>
-                            </a>
-                            @if (Session["Username"].ToString() == "admin")
-                               {
-                                <a href="@Url.Action("Admin","Admin", new {area = "ADMIN"})">
-                                    <button class="bt">
-                                        <img src="~/Content/Img/list-check-solid.svg" height="15px" width="15px" />
-                                    </button>
+                            <div class="dropdown-content">
+                                <a class="a1" href="@Url.Action("ProfileUser","Login")">
+                                    Profile
                                 </a>
+                                <a class="a1" href="@Url.Action("ShowFav","Favourite")">
+                                    Yêu thích
+                                </a>
+                                <a class="a1" href="@Url.Action("Logout","Login")">
+                                    Đăng xuất
+                                </a>
+                                @if (Session["Role"] != null)
+                                {
+                                    <a class="a1" href="@Url.Action("Admin","Admin", new {area = "ADMIN"})">
+                                        Sang Trang Admin
+                                    </a>
                                 }
+                            </div>
                         </div>
-                    </div>
                     }
                 }
                 else
                 {
                     <a href="@Url.Action("Login","Login")">
-                        <button class="bt">LOGIN</button>
+                        <button class="bt" style="margin-left: 70px">LOGIN</button>
                     </a>
                 }
             </nav>

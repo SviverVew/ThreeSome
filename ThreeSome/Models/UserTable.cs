@@ -35,6 +35,7 @@ namespace ThreeSome.Models
         public int userPhone { get; set; }
         public string Sex { get; set; }
         public Nullable<int> FavoriteVideo { get; set; }
+        public Nullable<bool> userRole { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<favorite> favorites { get; set; }

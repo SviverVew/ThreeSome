@@ -24,6 +24,7 @@ namespace ThreeSome.Models
         public string vidAddress { get; set; }
         public string vidIMG { get; set; }
         public Nullable<int> film_ID { get; set; }
+        public Nullable<int> Espisode1 { get; set; }
     
         public virtual Film Film { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

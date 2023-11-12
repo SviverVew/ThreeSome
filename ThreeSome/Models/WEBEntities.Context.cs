@@ -25,7 +25,6 @@ namespace ThreeSome.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<AdminTable> AdminTables { get; set; }
         public virtual DbSet<espisode> espisodes { get; set; }
         public virtual DbSet<favorite> favorites { get; set; }
         public virtual DbSet<Film> Films { get; set; }

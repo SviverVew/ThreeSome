@@ -1,14 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="WEBEntitiesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="AdminTable">
-    <Key>
-      <PropertyRef Name="AdminID" />
-    </Key>
-    <Property Name="AdminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="AdminName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="AdminPass" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="nameAdmin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-  </EntityType>
   <EntityType Name="espisode">
     <Key>
       <PropertyRef Name="vidID" />
@@ -19,6 +10,7 @@
     <Property Name="film_ID" Type="Int32" />
     <NavigationProperty Name="Film" Relationship="Self.FK__espisode__film_I__2D27B809" FromRole="espisode" ToRole="Film" />
     <NavigationProperty Name="favorites" Relationship="Self.FK__favorite__episod__30F848ED" FromRole="espisode" ToRole="favorite" />
+    <Property Name="Espisode1" Type="Int32" />
   </EntityType>
   <EntityType Name="favorite">
     <Key>
@@ -44,6 +36,7 @@
     <NavigationProperty Name="espisodes" Relationship="Self.FK__espisode__film_I__2D27B809" FromRole="Film" ToRole="espisode" />
     <Property Name="filmGenre" Type="Int32" />
     <NavigationProperty Name="genre" Relationship="WEBEntitiesModel.FK__Film__filmGenre__34C8D9D1" FromRole="Film" ToRole="genre" />
+    <Property Name="SumEspisode" Type="Int32" />
   </EntityType>
   <EntityType Name="genre">
     <Key>
@@ -68,6 +61,7 @@
     <Property Name="Sex" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
     <Property Name="FavoriteVideo" Type="Int32" />
     <NavigationProperty Name="favorites" Relationship="Self.FK__favorite__userID__2A4B4B5E" FromRole="UserTable" ToRole="favorite" />
+    <Property Name="userRole" Type="Boolean" />
   </EntityType>
   <Association Name="FK__espisode__film_I__2D27B809">
     <End Role="Film" Type="Self.Film" Multiplicity="0..1" />
@@ -106,7 +100,6 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="WEBEntitiesEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="AdminTables" EntityType="Self.AdminTable" />
     <EntitySet Name="espisodes" EntityType="Self.espisode" />
     <EntitySet Name="favorites" EntityType="Self.favorite" />
     <EntitySet Name="Films" EntityType="Self.Film" />

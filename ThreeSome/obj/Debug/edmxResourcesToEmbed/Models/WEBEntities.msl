@@ -1,19 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="WEBEntitiesModelStoreContainer" CdmEntityContainer="WEBEntitiesEntities">
-    <EntitySetMapping Name="AdminTables">
-      <EntityTypeMapping TypeName="WEBEntitiesModel.AdminTable">
-        <MappingFragment StoreEntitySet="AdminTable">
-          <ScalarProperty Name="AdminID" ColumnName="AdminID" />
-          <ScalarProperty Name="AdminName" ColumnName="AdminName" />
-          <ScalarProperty Name="AdminPass" ColumnName="AdminPass" />
-          <ScalarProperty Name="nameAdmin" ColumnName="nameAdmin" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="espisodes">
       <EntityTypeMapping TypeName="WEBEntitiesModel.espisode">
         <MappingFragment StoreEntitySet="espisode">
+          <ScalarProperty Name="Espisode1" ColumnName="Espisode" />
           <ScalarProperty Name="vidID" ColumnName="vidID" />
           <ScalarProperty Name="vidAddress" ColumnName="vidAddress" />
           <ScalarProperty Name="vidIMG" ColumnName="vidIMG" />
@@ -33,6 +24,7 @@
     <EntitySetMapping Name="Films">
       <EntityTypeMapping TypeName="WEBEntitiesModel.Film">
         <MappingFragment StoreEntitySet="Film">
+          <ScalarProperty Name="SumEspisode" ColumnName="SumEspisode" />
           <ScalarProperty Name="filmGenre" ColumnName="filmGenre" />
           <ScalarProperty Name="filmID" ColumnName="filmID" />
           <ScalarProperty Name="filmTitle" ColumnName="filmTitle" />
@@ -55,6 +47,7 @@
     <EntitySetMapping Name="UserTables">
       <EntityTypeMapping TypeName="WEBEntitiesModel.UserTable">
         <MappingFragment StoreEntitySet="UserTable">
+          <ScalarProperty Name="userRole" ColumnName="userRole" />
           <ScalarProperty Name="userID" ColumnName="userID" />
           <ScalarProperty Name="userName" ColumnName="userName" />
           <ScalarProperty Name="userPass" ColumnName="userPass" />

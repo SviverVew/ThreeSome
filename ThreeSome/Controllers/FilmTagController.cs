@@ -30,10 +30,10 @@ namespace ThreeSome.Controllers
         public ActionResult FilmDetail(int FilmID)
         {
             var film = db.Films.FirstOrDefault(x => x.filmID == FilmID);
-            string error = "Phim chuẩn bị phát hành";
+           
             if (film == null)
             {
-                return View(error) ;
+                return View(ViewBag.ErrorLog = "Phim chuẩn bị phát hành") ;
             }
 
             List<espisode> espisodes = db.espisodes.Where(x => x.film_ID == FilmID).ToList();

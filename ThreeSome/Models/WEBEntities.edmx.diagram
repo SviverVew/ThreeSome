@@ -5,7 +5,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="b279f8a085a442aabebcc2ddafc171e3" Name="Diagram1" ZoomLevel="80">
-        <EntityTypeShape EntityType="WEBEntitiesModel.AdminTable" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WEBEntitiesModel.espisode" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="WEBEntitiesModel.favorite" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="WEBEntitiesModel.Film" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />

@@ -1,0 +1,33 @@
+﻿@model ThreeSome.Models.UserTable
+
+@{
+    ViewBag.Title = "ProfileUser";
+    Layout = "~/Views/Shared/_FilmLayout.cshtml";
+}
+<style>
+    .box {
+        width: 460px;
+        height: 50px;
+        margin-bottom: 6px;
+        padding-left: 20px;
+        
+        background: transparent;
+        border-bottom: 4px solid #aef8ff;
+        border-left: none;
+        border-right: none;
+        border-radius: 10px;
+        border-top: none;
+        transition: ease-out 0.5s;
+    }
+    .box:hover {
+        border-color: white;
+        outline: none;
+        box-shadow: 0px 0px 20px #1f1f1f;
+    }
+</style>
+<div class="container" >
+    <div class="box" style="display:flex"><h2>Tên đăng nhập :<span>@Session["Username"]</span></h2></div>
+    <div class="box" style="display:flex"><h2>Tên tài khoản : <span>@Session["LastName"] @Session["Name"] </span></h2></div>
+    <div class="box" style="display:flex"><h2>Email :<span> @Session["Email"]</span></h2> </div>
+</div>
+

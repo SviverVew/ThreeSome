@@ -5,15 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="WEBEntitiesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="AdminTable">
-          <Key>
-            <PropertyRef Name="AdminID" />
-          </Key>
-          <Property Name="AdminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="AdminName" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="AdminPass" Type="nvarchar" MaxLength="100" />
-          <Property Name="nameAdmin" Type="nvarchar" MaxLength="50" />
-        </EntityType>
         <EntityType Name="espisode">
           <Key>
             <PropertyRef Name="vidID" />
@@ -22,6 +13,7 @@
           <Property Name="vidAddress" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="vidIMG" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="film_ID" Type="int" />
+          <Property Name="Espisode" Type="int" />
         </EntityType>
         <EntityType Name="favorite">
           <Key>
@@ -43,6 +35,7 @@
           <Property Name="filmLink" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="filmIMG" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="filmGenre" Type="int" />
+          <Property Name="SumEspisode" Type="int" />
         </EntityType>
         <EntityType Name="genre">
           <Key>
@@ -65,6 +58,7 @@
           <Property Name="userPhone" Type="int" Nullable="false" />
           <Property Name="Sex" Type="nvarchar" MaxLength="4" />
           <Property Name="FavoriteVideo" Type="int" />
+          <Property Name="userRole" Type="bit" />
         </EntityType>
         <Association Name="FK__espisode__film_I__2D27B809">
           <End Role="Film" Type="Self.Film" Multiplicity="0..1" />
@@ -115,7 +109,6 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="WEBEntitiesModelStoreContainer">
-          <EntitySet Name="AdminTable" EntityType="Self.AdminTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="espisode" EntityType="Self.espisode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="favorite" EntityType="Self.favorite" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Film" EntityType="Self.Film" Schema="dbo" store:Type="Tables" />
@@ -142,15 +135,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WEBEntitiesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="AdminTable">
-          <Key>
-            <PropertyRef Name="AdminID" />
-          </Key>
-          <Property Name="AdminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AdminName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AdminPass" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="nameAdmin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="espisode">
           <Key>
             <PropertyRef Name="vidID" />
@@ -161,6 +145,7 @@
           <Property Name="film_ID" Type="Int32" />
           <NavigationProperty Name="Film" Relationship="Self.FK__espisode__film_I__2D27B809" FromRole="espisode" ToRole="Film" />
           <NavigationProperty Name="favorites" Relationship="Self.FK__favorite__episod__30F848ED" FromRole="espisode" ToRole="favorite" />
+          <Property Name="Espisode1" Type="Int32" />
         </EntityType>
         <EntityType Name="favorite">
           <Key>
@@ -186,6 +171,7 @@
           <NavigationProperty Name="espisodes" Relationship="Self.FK__espisode__film_I__2D27B809" FromRole="Film" ToRole="espisode" />
           <Property Name="filmGenre" Type="Int32" />
           <NavigationProperty Name="genre" Relationship="WEBEntitiesModel.FK__Film__filmGenre__34C8D9D1" FromRole="Film" ToRole="genre" />
+          <Property Name="SumEspisode" Type="Int32" />
         </EntityType>
         <EntityType Name="genre">
           <Key>
@@ -210,6 +196,7 @@
           <Property Name="Sex" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
           <Property Name="FavoriteVideo" Type="Int32" />
           <NavigationProperty Name="favorites" Relationship="Self.FK__favorite__userID__2A4B4B5E" FromRole="UserTable" ToRole="favorite" />
+          <Property Name="userRole" Type="Boolean" />
         </EntityType>
         <Association Name="FK__espisode__film_I__2D27B809">
           <End Role="Film" Type="Self.Film" Multiplicity="0..1" />
@@ -248,7 +235,6 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="WEBEntitiesEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="AdminTables" EntityType="Self.AdminTable" />
           <EntitySet Name="espisodes" EntityType="Self.espisode" />
           <EntitySet Name="favorites" EntityType="Self.favorite" />
           <EntitySet Name="Films" EntityType="Self.Film" />
@@ -289,19 +275,10 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="WEBEntitiesModelStoreContainer" CdmEntityContainer="WEBEntitiesEntities">
-          <EntitySetMapping Name="AdminTables">
-            <EntityTypeMapping TypeName="WEBEntitiesModel.AdminTable">
-              <MappingFragment StoreEntitySet="AdminTable">
-                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
-                <ScalarProperty Name="AdminName" ColumnName="AdminName" />
-                <ScalarProperty Name="AdminPass" ColumnName="AdminPass" />
-                <ScalarProperty Name="nameAdmin" ColumnName="nameAdmin" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="espisodes">
             <EntityTypeMapping TypeName="WEBEntitiesModel.espisode">
               <MappingFragment StoreEntitySet="espisode">
+                <ScalarProperty Name="Espisode1" ColumnName="Espisode" />
                 <ScalarProperty Name="vidID" ColumnName="vidID" />
                 <ScalarProperty Name="vidAddress" ColumnName="vidAddress" />
                 <ScalarProperty Name="vidIMG" ColumnName="vidIMG" />
@@ -321,6 +298,7 @@
           <EntitySetMapping Name="Films">
             <EntityTypeMapping TypeName="WEBEntitiesModel.Film">
               <MappingFragment StoreEntitySet="Film">
+                <ScalarProperty Name="SumEspisode" ColumnName="SumEspisode" />
                 <ScalarProperty Name="filmGenre" ColumnName="filmGenre" />
                 <ScalarProperty Name="filmID" ColumnName="filmID" />
                 <ScalarProperty Name="filmTitle" ColumnName="filmTitle" />
@@ -343,6 +321,7 @@
           <EntitySetMapping Name="UserTables">
             <EntityTypeMapping TypeName="WEBEntitiesModel.UserTable">
               <MappingFragment StoreEntitySet="UserTable">
+                <ScalarProperty Name="userRole" ColumnName="userRole" />
                 <ScalarProperty Name="userID" ColumnName="userID" />
                 <ScalarProperty Name="userName" ColumnName="userName" />
                 <ScalarProperty Name="userPass" ColumnName="userPass" />

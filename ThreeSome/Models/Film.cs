@@ -16,6 +16,7 @@ namespace ThreeSome.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Web;
     using System.IO;
+
     public partial class Film
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -32,6 +33,7 @@ namespace ThreeSome.Models
         public string filmLink { get; set; }
         public string filmIMG { get; set; }
         public Nullable<int> filmGenre { get; set; }
+        public Nullable<int> SumEspisode { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<espisode> espisodes { get; set; }

@@ -144,9 +144,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AdminTable.cs">
-      <DependentUpon>WEBEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\espisode.cs">
       <DependentUpon>WEBEntities.tt</DependentUpon>
     </Compile>
@@ -294,6 +291,7 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Login\Register.cshtml" />
     <Content Include="Views\Gerne\Index.cshtml" />
+    <Content Include="Views\Login\ProfileUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

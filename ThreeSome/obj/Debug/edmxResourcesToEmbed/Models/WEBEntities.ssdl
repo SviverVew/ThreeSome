@@ -1,14 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="WEBEntitiesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="AdminTable">
-    <Key>
-      <PropertyRef Name="AdminID" />
-    </Key>
-    <Property Name="AdminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="AdminName" Type="nvarchar" MaxLength="30" Nullable="false" />
-    <Property Name="AdminPass" Type="nvarchar" MaxLength="100" />
-    <Property Name="nameAdmin" Type="nvarchar" MaxLength="50" />
-  </EntityType>
   <EntityType Name="espisode">
     <Key>
       <PropertyRef Name="vidID" />
@@ -17,6 +8,7 @@
     <Property Name="vidAddress" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="vidIMG" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="film_ID" Type="int" />
+    <Property Name="Espisode" Type="int" />
   </EntityType>
   <EntityType Name="favorite">
     <Key>
@@ -38,6 +30,7 @@
     <Property Name="filmLink" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="filmIMG" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="filmGenre" Type="int" />
+    <Property Name="SumEspisode" Type="int" />
   </EntityType>
   <EntityType Name="genre">
     <Key>
@@ -60,6 +53,7 @@
     <Property Name="userPhone" Type="int" Nullable="false" />
     <Property Name="Sex" Type="nvarchar" MaxLength="4" />
     <Property Name="FavoriteVideo" Type="int" />
+    <Property Name="userRole" Type="bit" />
   </EntityType>
   <Association Name="FK__espisode__film_I__2D27B809">
     <End Role="Film" Type="Self.Film" Multiplicity="0..1" />
@@ -110,7 +104,6 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="WEBEntitiesModelStoreContainer">
-    <EntitySet Name="AdminTable" EntityType="Self.AdminTable" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="espisode" EntityType="Self.espisode" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="favorite" EntityType="Self.favorite" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Film" EntityType="Self.Film" Schema="dbo" store:Type="Tables" />
