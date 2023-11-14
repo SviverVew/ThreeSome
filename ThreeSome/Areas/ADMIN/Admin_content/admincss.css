@@ -1,4 +1,4 @@
-﻿* {
+﻿	* {
 	font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -90,6 +90,8 @@ body {
 }
 
 .noidung {
+	margin-left:40px;
+	display:block;
 	padding-top: 5em;
 	float: right;
 	width: 84%;
@@ -97,7 +99,7 @@ body {
 }
 
 .Content {
-	display: flex;
+	display:inline-block;
 	flex-direction: row;
 	width: calc(100%);
 }

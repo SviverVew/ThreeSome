@@ -1,67 +1,11 @@
 ﻿@model IEnumerable<ThreeSome.Models.FilmModel>
 
 @{
-    ViewBag.Title = "FilmDetail";
+    ViewBag.Title = "Thông tin phim";
     Layout = "~/Views/Shared/_FilmLayout.cshtml";
-}
+    }
 <link href="~/Content/Css/trending.css" rel="stylesheet" />
-<style>
-    .size-img {
-        width: 300px;
-        height: 300px;
-        object-fit: cover;
-    }
-    .info-container {
-    }
-
-    .dess {
-        position:;
-        top: -200px;
-        margin-top: -100px;
-    }
-
-    .des-text {
-        color: white;
-        position: absolute;
-        width: 820px;
-        height: 686px;
-        transition: 0.9s;
-        background: linear-gradient(90deg,#181818 10%,hsla(0,0%,9%,.98) 20%,hsla(0,0%,9%,.97) 25%,hsla(0,0%,9%,.95) 35%,hsla(0,0%,9%,.94) 40%,hsla(0,0%,9%,.92) 45%,hsla(0,0%,9%,.9) 50%,hsla(0,0%,9%,.87) 55%,hsla(0,0%,9%,.82) 60%,hsla(0,0%,9%,.75) 65%,hsla(0,0%,9%,.63) 70%,hsla(0,0%,9%,.45) 75%,hsla(0,0%,9%,.27) 80%,hsla(0,0%,9%,.15) 85%,hsla(0,0%,9%,.08) 90%,hsla(0,0%,9%,.03) 95%,hsla(0,0%,9%,0));
-    }
-
-        .des-text:hover {
-            width: 1520px;
-            font-size:
-        }
-
-    .anh-phim {
-        object-fit: cover;
-        width: 1590px;
-        height: 686px;
-    }
-
-    .tieu-de {
-        font-size: 45px;
-        transform: translate(150px,200px);
-        color: red;
-        margin-bottom: 30px;
-    }
-
-    .mo-ta {
-        transform: translate(150px,200px );
-        font-size: 16px;
-        transition: 0.9s;
-    }
-
-    .des-text:hover .mo-ta {
-        font-size: 25px;
-    }
-
-    body {
-        background-image: none;
-        background-color: #000000;
-    }
-</style>
+<link href="~/Content/Css/TagFilm.css" rel="stylesheet" />
 @if (ViewBag.ErrorMessage != null)
 {
     <div>
@@ -74,15 +18,36 @@ else if (Model.Any())
         <div class="dess">
             <div class="des-text">
                 <h3 class="tieu-de">
+                    <button id="heartButton">
+                        <a style="text-decoration: none;" id="heartButton" href="@Url.Action("AddtoFav", "Favourite", new {id = Model.First().FilmID})">
+                            <ion-icon id="heartIcon" name="heart"></ion-icon>
+                            <h6 id="statusText">Thích</h6>
+                        </a>
+                    </button>
                     @Model.First().FilmTitle
                 </h3>
                 <p class="mo-ta">@Model.First().FilmDes</p>
             </div>
             <img class="anh-phim" src="@Url.Content(Model.First().FilmImg)" />
         </div>
-
     </span>
 }
+
+<script>
+    const button = document.getElementById("heartButton");
+    const icon = document.getElementById("heartIcon");
+    button.addEventListener("click", function () {
+        if (button.classList.contains("active")) {
+            button.classList.remove("active");
+            icon.setAttribute("name", "heart");
+            icon.setAttribute("style", "color:hotpink");
+        } else {
+            button.classList.add("active");
+            icon.setAttribute("name", "heart");
+            icon.setAttribute("style", "color:hotpink");
+        }
+    });
+</script>
 <h3 style="margin-top:300px;color:white">Danh sách các tập phim </h3>
 <br />
 <div class="container" style="display:flex">
@@ -100,14 +65,14 @@ else if (Model.Any())
         }
         else
         {
-          <a href="@Url.Action("WatchMovie", "FilmTag", new { area = "" })?VidID=@item.VidId">
+          <a style="text-decoration:none" href="@Url.Action("WatchMovie", "FilmTag", new { area = "" })?VidID=@item.VidId">
             <div class="col" style="margin:50px;color:white">
                 <img class="size-img" src="@Url.Content(item.VidIMG)" />
                 <div class="box-video" style="text-decoration:none">
-                    <h3 class="card-title">@item.VidTitle</h3>
+                    <h3 class="card-title"style="text-decoration:none" >@item.VidTitle</h3>
                 </div>
             </div>
         </a>
         }
-    }
+     }
 </div>

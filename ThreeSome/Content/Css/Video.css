@@ -1,0 +1,16 @@
+﻿
+.video {
+    width: 70%;
+    height: 70%;
+    border-radius: 20px;
+    margin-left: 50px;
+}
+.MovieName {
+    margin-left: 50px;
+}
+.container {
+    background-color: black;
+    width: 100%;
+    height: 900px;
+    margin-bottom: 0px;
+}

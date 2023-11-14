@@ -7,6 +7,8 @@ namespace ThreeSome.Models
 {
     public class FilmModel
     {
+        public int GerneId { get; set; }
+        public string GerneName { get; set; }
         public int VidId { get; set; }
         public string VidAddress {  get; set; }
         public string VidTitle { get; set; }
@@ -18,6 +20,5 @@ namespace ThreeSome.Models
         public string FilmDes { get; set; }
         public string FilmLink {  get; set; }
         public Nullable<int> EspisodeCount { get; set; }
-        public List<TapPhimModel> TapPhims { get; set; }
     }
 }

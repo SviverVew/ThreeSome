@@ -1,6 +1,7 @@
-﻿.size-img{
-    width:260px;
-    height:190px;
+﻿.size-img {
+    width: 260px;
+    height: 190px;
+    border-radius: 10px 10px 10px 10px;
 }
 .box-video {
     text-align: center;
@@ -12,10 +13,9 @@
 }
     .box-video:hover {
         backdrop-filter: blur(20px);
+        
     }
-.size-img {
-    border-radius: 15px 15px 0px 0px;
-}
+
 .col {
     width: 260px;
     height: 290px;
@@ -23,8 +23,8 @@
     transition: 0.3s;
     border-radius:15px;
 }
-.col:hover {
-        box-shadow: 0px 0px 10px black;
+    .col:hover {
+        box-shadow: 17px 0px 30px white;
     }
 .row {
     display: flex;

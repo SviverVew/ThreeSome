@@ -1,0 +1,38 @@
+﻿@model ThreeSome.Models.ListFavourite
+
+@{
+    ViewBag.Title = "Favourite";
+    Layout = "~/Views/Shared/_FilmLayout.cshtml";
+}
+<link href="~/Content/Css/TagFilm.css" rel="stylesheet" />
+<link href="~/Content/Css/trending.css" rel="stylesheet" />
+<link href="~/Content/Css/Menu.css" rel="stylesheet" />
+<link href="~/Content/Css/Main.css" rel="stylesheet" />
+<div style="min-height:500px">
+    <h2>Favourite</h2>
+    @if (Model != null)
+    {
+        foreach (var item in Model.FAV_ITEM)
+        {
+            <a class="video-look" href="">
+                <div class="col">
+                    <img class="size-img" src="@Url.Content(item._film.filmIMG)" alt="" />
+                    <div class="box-video">
+                        <p class="card-title">@Url.Content(item._film.filmTitle)</p>
+                    </div>
+                </div>
+                <a id="heartButton" style="text-decoration: none;display:flex; flex-direction: column; align-items: center" href="@Url.Action("RemoveFromList","Favourite", new {id = item._film.filmID})">
+                    <button id="heartButton">
+                        <ion-icon style="" id="heartIcon" name="heart"></ion-icon>
+                        <h6 id="statusText" style="">Xóa thích</h6>
+                    </button>
+                </a>
+            </a>
+        }
+    }
+    else
+    {
+        <p style="margin-top:150px;margin-left:-50px">Chưa thêm video yêu thích nào</p>
+    }
+</div>
+

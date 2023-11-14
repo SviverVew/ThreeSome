@@ -99,6 +99,15 @@ namespace ThreeSome.Areas.ADMIN.Controllers
             }
             
         }
+        public ActionResult ChooseGen()
+        {
+            Film film = new Film();
+            var genres = db.genres.Where(g => g.genreName != "nulll").ToList();
+            ViewBag.Genres = new SelectList(genres, "genreID", "genreName");
+            return PartialView(film);
+        }
+       
         #endregion
+
     }
 }

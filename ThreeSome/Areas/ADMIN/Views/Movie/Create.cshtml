@@ -4,8 +4,11 @@
     ViewBag.Title = "Tạo phim mới";
     Layout = "~/Areas/ADMIN/Views/Shared/adminlayout.cshtml";
 }
+<link href="~/Content/Css/Login-Register.css" rel="stylesheet" />
+<link href="~/Content/Css/Main.css" rel="stylesheet" />
+<script src="~/Scripts/hienimg.js"></script>
 <link href="~/Areas/ADMIN/Admin_content/admincss.css" rel="stylesheet" />
-@using (Html.BeginForm("Create","Movie",FormMethod.Post, new { enctype = "multipart/form-data" })) 
+@using (Html.BeginForm("Create", "Movie", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <div class="form-horizontal">
@@ -14,7 +17,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.filmTitle, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.filmTitle, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.filmTitle, new { htmlAttributes = new { @class = "name" } })
                 @Html.ValidationMessageFor(model => model.filmTitle, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -22,7 +25,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.filmDes, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.filmDes, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.filmDes, new { htmlAttributes = new { @class = "name" } })
                 @Html.ValidationMessageFor(model => model.filmDes, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -30,7 +33,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.filmEsp, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.filmEsp, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.filmEsp, new { htmlAttributes = new { @class = "name" } })
                 @Html.ValidationMessageFor(model => model.filmEsp, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -38,7 +41,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.filmStatus, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.filmStatus, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.filmStatus, new { htmlAttributes = new { @class = "name" } })
                 @Html.ValidationMessageFor(model => model.filmStatus, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -46,32 +49,37 @@
         <div class="form-group">
             @Html.LabelFor(model => model.filmLink, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.filmLink, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.filmLink, new { htmlAttributes = new { @class = "name" } })
                 @Html.ValidationMessageFor(model => model.filmLink, "", new { @class = "text-danger" })
             </div>
         </div>
         <!--FILM IMG-->
         <div class="form-group">
+
             @Html.LabelFor(model => model.filmIMG, htmlAttributes: new { @class = "control-label col-md-2" })
-			<div class="col-md-10">
-				@Html.EditorFor(model => model.filmIMG, new { htmlAttributes = new { @class = "form-control" } })
-				<br />
-				<input type="file" name="IMGupload"  style="margin:1em;" />
-				@Html.ValidationMessageFor(model => model.filmIMG, "", new { @class = "text-danger" })
-			</div>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.filmIMG, new { htmlAttributes = new { @class = "name" } })
+                <br />
+                <input class="" type="file" name="IMGupload" style="margin:1em;" onchange="PreviewIMG(this)" />
+                <img src="https://cdn.7tv.app/emote/6405180959f51b6ela7e9a0e/4x.webp" id="preview" alt="Preview" height="100px" width="200px" />
+                @Html.ValidationMessageFor(model => model.filmIMG, "", new { @class = "text-danger" })
+            </div>
         </div>
+
         <!--FILM GENRE-->
         <div class="form-group">
+
             @Html.LabelFor(model => model.filmGenre, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.filmGenre, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.filmGenre, new { htmlAttributes = new { @class = "name" } })*@
+                @{Html.RenderAction("ChooseGen", "Movie");}
                 @Html.ValidationMessageFor(model => model.filmGenre, "", new { @class = "text-danger" })
             </div>
         </div>
         <!--SUBMIT-->
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="login" />
             </div>
         </div>
     </div>

@@ -1,11 +1,9 @@
-﻿@model IEnumerable < ThreeSome.Models.Film>
+﻿@model IEnumerable<ThreeSome.Models.Film>
 
 @{
-    ViewBag.Title = "SearchResult";
+    ViewBag.Title = "Tìm kiếm cho " + ViewBag.Search;
     Layout = "~/Views/Shared/_FilmLayout.cshtml";
 }
-
-
 <link href="~/Content/Css/trending.css" rel="stylesheet" />
 <link href="~/Content/Css/Main.css" rel="stylesheet" />
 
@@ -14,26 +12,17 @@
     <div class="row">
         @if (Model != null && Model.Any())
         {
-            if (ViewBag.Search != "")
+            <h3>KẾT QUẢ CHO "@ViewBag.Search"</h3>
+            foreach (var item in Model)
             {
-
-
-                <h3>KẾT QUẢ CHO "@ViewBag.Search"</h3>
-                foreach (var item in Model)
-                {
-                    <a class="video-look" href="@Url.Action("Video", "Video", new {id = item.filmID})">
-                        <div class="col">
-                            <img class="size-img" src="@Url.Content(item.filmIMG)" alt="" />
-                            <div class="box-video">
-                                <p class="card-title">@Url.Content(item.filmTitle)</p>
-                            </div>
+                <a class="video-look" href="@Url.Action("FilmDetail", "FilmTag", new { area = "" })?FilmID=@item.filmID">
+                    <div class="col">
+                        <img class="size-img" src="@Url.Content(item.filmIMG)" alt="" />
+                        <div class="box-video">
+                            <p class="card-title">@Url.Content(item.filmTitle)</p>
                         </div>
-                    </a>
-                }
-            }
-            else
-            {
-    <span></span>
+                    </div>
+                </a>
             }
         }
         else

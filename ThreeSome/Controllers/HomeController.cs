@@ -10,10 +10,6 @@ namespace ThreeSome.Controllers
     public class HomeController : Controller
     {
         WEBEntitiesEntities db = new WEBEntitiesEntities();
-        public ActionResult Register()
-        {
-            return View();
-        }
         public ActionResult Index()
         {
             List<Film> FilmList = db.Films.ToList();
@@ -28,14 +24,35 @@ namespace ThreeSome.Controllers
                 ).ToList();
             return View(filmModel);
         }
-        public ActionResult Login()
+        public ActionResult Gerne(int GenreID)
         {
-            return View();
-        }
+            var Ger = db.genres.FirstOrDefault(x => x.genreID == GenreID);
 
-        public ActionResult Trending()
-        {
-            return View();
+            if (Ger.genreID!= GenreID)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            List<Film> filmm = db.Films.Where(x => x.filmGenre == GenreID).ToList();
+            var filModel = filmm.Select(
+                x => new FilmModel
+                {
+                   FilmTitle=x.filmTitle,
+                   FilmDes=x.filmDes,
+                   FilmImg=x.filmIMG,
+                   FilmCount=x.filmEsp,
+                    FilmID = x.filmID,
+                    FilmLink = x.filmLink,
+                }
+                ).ToList();
+            // Gán thông tin của bộ phim cho phần tử đầu tiên trong VidModel
+
+            if (filModel.Any())
+            {
+                filModel.First().GerneId = Ger.genreID;
+                filModel.First().GerneName = Ger.genreName;
+            }
+           
+            return View(filModel);
         }
 
         public ActionResult About()
@@ -45,11 +62,5 @@ namespace ThreeSome.Controllers
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
     }
 }

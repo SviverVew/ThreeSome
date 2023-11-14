@@ -1,0 +1,4 @@
+﻿@model ThreeSome.Models.Film
+<link href="~/Content/Css/Main.css" rel="stylesheet" />
+<link href="~/Content/Css/Login-Register.css" rel="stylesheet" />
+@Html.DropDownListFor(model => model.filmGenre, ViewBag.Genres as SelectList, "---- Thể loại ----", new { @class = "name" })

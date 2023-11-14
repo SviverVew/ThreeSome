@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ThreeSome.Models.espisode>
+
+@{
+    ViewBag.Title = "Video";
+    Layout = "~/Areas/ADMIN/Views/Shared/adminlayout.cshtml";
+}
+
+<style>
+    th {
+        font-size: 0.9rem;
+    }
+</style>
+<p style="margin-left:50px;font-size:25px;color:#00ff90;text-decoration:none">
+    @Html.ActionLink("Create", "Create", "Video")
+</p>
+<table class="table" style="color:white">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.vidID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vidAddress)
+        </th>
+        <th>
+            ACTION
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.vidID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.vidAddress)
+            </td>
+            <td>
+                <img src="@Url.Content(item.vidIMG)" alt="Movie Thumbnail" style="height:10rem ; width:10rem">
+            </td>
+            <td>
+               
+
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.vidID })
+                <br />
+                @Html.ActionLink("Delete", "Delete", new { id = item.vidID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+

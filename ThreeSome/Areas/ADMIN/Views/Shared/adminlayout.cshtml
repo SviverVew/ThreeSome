@@ -7,43 +7,48 @@
 	<link href="~/Areas/ADMIN/Admin_content/admincss.css" rel="stylesheet" />
 	<title>@ViewBag.Title</title>
 </head>
-<body style="margin: 0px; padding: 0px; color:white">
+<body style="margin-left: 0px; padding: 0px; color:white">
 	<div class="top">
 		<h1 class="admin" style="">@ViewBag.Title</h1>
 	</div>
 
-	<div class="Content">
+	<div class="Content" >
 		<div class="left">
 			<nav class="navbar-sidebar">
-				<ul class="list-nav">
-					<li style="display:flex;flex-direction:column;align-content:center">ADMIN</li>
-					<li>
-						<a href="@Url.Action("Movie","Movie")">
-							<i class="fa fa-video-camera"></i> 📷 Quản Lý Phim
-						</a>
-					</li>
-					<li>
-						<a href="@Url.Action("Genre","Genre")">
-							<i class="fa fa-list-alt"></i>📅 Quản Lý Thể Loại
-						</a>
-					</li>
-					<li>
-						<a href="@Url.Action("UserList","User")">
-							<i class="fa fa-list-alt"></i>👤 Quản Lý Người dùng
-						</a>
-					</li>
-					<li style="margin-top:100% ">
-						<a href="@Url.Action("Homepage","Home",new { area = "" })">
-							<i class="fa fa-list-alt"></i><div class="back-button" style="margin-left:10px">&#8592; Xem phim</div>
-						</a>
-					</li>
-				</ul>
+                <ul class="list-nav">
+                    <li style="display:flex;flex-direction:column;align-content:center">ADMIN</li>
+                    <li>
+                        <a href="@Url.Action("Movie","Movie")">
+                            <i class="fa fa-video-camera"></i> 📷 Quản Lý Phim
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Genre","Genre")">
+                            <i class="fa fa-list-alt"></i>📅 Quản Lý Thể Loại
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("UserList","User")">
+                            <i class="fa fa-list-alt"></i>👤 Quản Lý Người dùng
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Create","Video")">
+                            <i class="fa fa-list-alt"></i>📷 Thêm tập cho phim
+                        </a>
+                    </li>
+                    <li style="margin-top:100% ">
+                        <a href="@Url.Action("Index","Home",new { area = "" })">
+                            <i class="fa fa-list-alt"></i><div class="back-button" style="margin-left:10px">&#8592; Xem phim</div>
+                        </a>
+                    </li>
+                </ul>
 			</nav>
 		</div>
 
 	</div>
 
-	<div class="noidung">
+	<div class="noidung" style="margin-left:0px; display:flex;flex-wrap:wrap;">
 		@RenderBody()
 	</div>
 </body>

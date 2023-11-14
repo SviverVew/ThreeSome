@@ -1,0 +1,53 @@
+﻿@model ThreeSome.Models.espisode
+
+@{
+    ViewBag.Title = "Tạo tập phim";
+    Layout = "~/Areas/ADMIN/Views/Shared/adminlayout.cshtml";
+}
+
+<h2>Create</h2>
+<link href="~/Content/Css/Main.css" rel="stylesheet" />
+<link href="~/Content/Css/Login-Register.css" rel="stylesheet" />
+<link href="~/Areas/ADMIN/Admin_content/admincss.css" rel="stylesheet" />
+@using (Html.BeginForm("Create", "Video", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <!--film ìd-->
+        <div class="form-group">
+            @Html.LabelFor(model => model.film_ID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @{Html.RenderAction("ChooseFilm", "Video");}
+            </div>
+        </div>
+        <!--video LINK-->
+        <div class="form-group">
+            @Html.LabelFor(model => model.vidAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.vidAddress, new { htmlAttributes = new { @class = "name" } })
+                @Html.ValidationMessageFor(model => model.vidAddress, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <!--video IMG-->
+        <div class="form-group">
+            
+            @Html.LabelFor(model => model.vidIMG, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <br />
+                <input class="" type="file" name="IMGupload" style="margin:1em;" onchange="PreviewIMG(this)"/>
+                <img src="https://cdn.7tv.app/emote/6405180959f51b6ela7e9a0e/4x.webp" id="preview" alt="Preview" height="100px" width="200px"/>
+                @Html.ValidationMessageFor(model => model.vidIMG, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <!--SUBMIT-->
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="login" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Video")
+</div>

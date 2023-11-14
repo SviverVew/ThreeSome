@@ -1,0 +1,4 @@
+﻿@model ThreeSome.Models.espisode
+<link href="~/Content/Css/Main.css" rel="stylesheet" />
+<link href="~/Content/Css/Login-Register.css" rel="stylesheet" />
+@Html.DropDownListFor(model => model.film_ID, (SelectList)ViewBag.FilmsList, "---- Chọn Phim ----", new { @class = "name" })

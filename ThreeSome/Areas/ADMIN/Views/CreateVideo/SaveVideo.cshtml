@@ -1,0 +1,26 @@
+﻿@model ThreeSome.Models.espisode
+
+<input type="file" id="fileInput" accept="video/*" />
+<button onclick="uploadFile()">Upload</button>
+<script>
+    function uploadFile() {
+        var fileInput = document.getElementById('fileInput');
+        var file = fileInput.files[0]; // Lấy tệp đã chọn
+
+        var formData = new FormData();
+        formData.append('file', file); // Gắn tệp vào FormData
+
+        // Gửi yêu cầu POST đến máy chủ
+        fetch('/Upload/SaveVideo', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => {
+                // Xử lý phản hồi từ máy chủ
+                console.log('Video uploaded successfully.');
+            })
+            .catch(error => {
+                console.error('Error uploading video:', error);
+            });
+    }
+</script>

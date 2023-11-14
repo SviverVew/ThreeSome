@@ -1,12 +1,41 @@
-﻿@model ThreeSome.Models.FilmModel
+﻿@model  ThreeSome.Models.FilmModel
 
 @{
     ViewBag.Title = "WatchMovie";
 }
 
-<video controls="controls">
-    <source src="@Url.Content(Model.VidAddress)" />
-</video>
-<h1 class="MovieName" style="color:white">
-    @Model.VidTitle
-</h1>
+<style>
+    .main_video{
+        width:1080px;
+        height:720px;
+    }
+    body {
+        
+        margin-top: -50px;
+        background-image: none;
+        background-color: #0d0d0d;
+    }
+</style>
+<link href="~/Content/Css/TagFilm.css" rel="stylesheet" />
+<link href="~/Content/Css/Video.css" rel="stylesheet" />
+<div class="container">
+   @Url.Content(Model.VidAddress)"
+    <iframe class="main_video" src="@Url.Content(Model.VidAddress)/preview"></iframe>
+    <h1 class="MovieName" style="color:white">
+        @Model.VidTitle
+    </h1>
+    <h2 style="color: white; margin-left: 15%; margin-top: 10%;">Các tập phim liên quan:</h2>
+    <div class="MoreVideo" style="display:flex;flex-wrap:wrap">
+        @foreach (var episode in ViewBag.Episodes)
+        {
+            <a style="text-decoration:none" href="@Url.Action("WatchMovie", "FilmTag", new { area = "" })?VidID=@episode.vidID">
+                <div class="col" style="margin:50px;color:white;">
+                    <img class="size-img" src="@Url.Content(episode.vidIMG)" />
+                    <div class="box-video" style="text-decoration:none">
+                        <h3 class="card-title" style="text-decoration:none">@($"{Model.FilmTitle}: Tập {episode.Espisode1}")</h3>
+                    </div>
+                </div>
+            </a>
+        }
+    </div>
+</div>

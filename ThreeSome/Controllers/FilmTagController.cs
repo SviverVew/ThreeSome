@@ -49,6 +49,7 @@ namespace ThreeSome.Controllers
 
             if (VidModel.Any())
             {
+            VidModel.First().FilmID = film.filmID;
             VidModel.First().FilmImg = film.filmIMG;
             VidModel.First().FilmTitle = film.filmTitle;
             VidModel.First().FilmDes = film.filmDes;
@@ -69,14 +70,15 @@ namespace ThreeSome.Controllers
                 VidTitle = $"{film.filmTitle}: Tập {vid.Espisode1}",
                 VidIMG = vid.vidIMG,
                 VidAddress = vid.vidAddress,
+                VidId = vid.vidID,
                 FilmImg = film.filmIMG,
                 FilmTitle = film.filmTitle,
-                FilmDes = film.filmDes
+                FilmDes = film.filmDes,
+                FilmID=film.filmID
             };
             // Tìm các tập phim liên quan có cùng film_ID với bộ phim
-            var relatedEpisodes = db.espisodes.Where(x => x.film_ID == film.filmID).ToList();
+            ViewBag.Episodes = db.espisodes.Where(x => x.film_ID == Filmss).ToList();
             return View(VidModel);
-
         }
     }
 }

@@ -3,13 +3,13 @@
     Layout = null;
 }
 <div class="dropdown">
-    <a class="a1" id="theloai" href="Gerne">Thể loại <span style="font-size:10px">&#9660;</span></a>
+    <a class="a1" id="theloai" href="">Thể loại <span style="font-size:10px">&#9660;</span></a>
     <div class="dropdown-content">
         @foreach (var item in Model)
         {
             if (item.genreID != 1)
             {
-                <a class="a1"  href="#">@item.genreName</a>
+                <a class="a1"  href="@Url.Action("Gerne", "Home", new { area = "" })?GenreID=@item.genreID">@item.genreName</a>
             }
         }
     </div>

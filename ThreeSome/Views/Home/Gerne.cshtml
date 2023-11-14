@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ThreeSome.Models.FilmModel>
+
+@{
+    ViewBag.Title = "Gerne";
+    Layout = "~/Views/Shared/_FilmLayout.cshtml";
+}
+<link href="~/Content/Css/TagFilm.css" rel="stylesheet" />
+<link href="~/Content/Css/trending.css" rel="stylesheet" />
+@if (ViewBag.ErrorMessage != null)
+{
+    <div>
+        <h3 style="color:white">@ViewBag.ErrorMessage</h3>
+    </div>
+}
+else if (Model.Any())
+{
+<h3 style="color:white;margin-left:-50%;">
+    @Model.First().GerneName
+</h3>
+}
+else
+{
+<h2 style="color:white">
+    Thể loại không có phim nào
+</h2>
+
+}
+<div class="container" style="display:flex;flex-wrap:wrap;margin-left:-20%">
+    @foreach (var item in Model)
+    {
+        if (@Session["Name"] == null)
+        {
+            <div class="col" style="margin:50px;color:white">
+                <img class="size-img" src="@Url.Content(item.FilmImg)" />
+                <div class="box-video">
+                    <h3 class="card-title">@item.FilmTitle</h3>
+                    <h3 class="card-title" style="font-size: 14px; margin-top: 10px">Số tập : @item.FilmCount</h3>
+
+                </div>
+            </div>
+        }
+        else
+        {
+            <a style="text-decoration:none" href="@Url.Action("FilmDetail", "FilmTag", new { area = "" })?FilmID=@item.FilmID">
+                <div class="col" style="margin:50px;color:white">
+                    <img class="size-img" src="@Url.Content(item.FilmImg)" />
+                    <div class="box-video">
+                        <h3 class="card-title">@item.FilmTitle</h3>
+
+                        <h3 class="card-title" style="font-size:14px;margin-top:10px">Số tập : @item.FilmCount</h3>
+                    </div>
+                </div>
+            </a>
+        }
+    }
+</div>
+

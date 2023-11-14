@@ -20,66 +20,79 @@
                 @using (Html.BeginForm("SearchResult", "Search", FormMethod.Post))
                 {<div class="search">
                     <label for="search_bar"><input type="text" name="tukhoa" id="search_bar" onchange="onChangeSearch(this.value)" placeholder="Tìm Kiếm...." /></label>
-                    <label for="search"><button id="search_button" disabled><ion-icon name="search"></button></label>
+                    <label for="search"><button id="search_button" disabled><ion-icon name="search-sharp" class="icon"></button></label>
                  </div>
                 }
             
 
-            <nav class="nav" style="width:40%">
-                @{
-                    Html.RenderAction("Index", "Gerne");
-                }
-                <a class="a1" id="fa" href="@Url.Action("Favorite", "Home", new { area = "" })">Yêu thích</a>
-                <a class="a1" id="ab" href="@Url.Action("About", "Home", new { area = "" })">About</a>
-                @{
-                    bool showLoginButton = Session["Username"] == null;
-                }
-                @if (Session["Username"] != null)
+        <nav class="nav" style="width:40%">
+
+            @{
+                Html.RenderAction("Index", "Gerne");
+
+            }
+            @{
+                string url;
+                if (Session["Name"] == null)
                 {
-                    if (Session["Name"] == null)
-                    {
-                        <a href="@Url.Action("Login","Login")">
-                            <button class="bt" style="margin-left: 70px">LOGIN</button>
-                        </a>
-                    }
-                    else
-                    {
-                        <div class="dropdown">
-                            <a href="#">
-                                <button class="bt" style="font-size: 20px; margin-left: 70px ">@Session["Name"]</button>
-                            </a>
-                            <div class="dropdown-content">
-                                <a class="a1" href="@Url.Action("ProfileUser","Login")">
-                                    Profile
-                                </a>
-                                <a class="a1" href="@Url.Action("ShowFav","Favourite")">
-                                    Yêu thích
-                                </a>
-                                <a class="a1" href="@Url.Action("Logout","Login")">
-                                    Đăng xuất
-                                </a>
-                                @if (Session["Role"] != null)
-                                {
-                                    <a class="a1" href="@Url.Action("Admin","Admin", new {area = "ADMIN"})">
-                                        Sang Trang Admin
-                                    </a>
-                                }
-                            </div>
-                        </div>
-                    }
+                    url = Url.Action("Login", "Login");
                 }
                 else
+                {
+                    url = Url.Action("Favourite", "Favourite");
+                }
+            }
+            <a class="a1" id="fa" href="@url">Yêu thích</a>
+            <a class="a1" id="ab" href="@Url.Action("About", "Home", new { area = "" })">About</a>
+            @{
+                bool showLoginButton = Session["Username"] == null;
+            }
+            @if (Session["Username"] != null)
+            {
+                if (Session["Name"] == null)
                 {
                     <a href="@Url.Action("Login","Login")">
                         <button class="bt" style="margin-left: 70px">LOGIN</button>
                     </a>
                 }
-            </nav>
+                else
+                {
+                    <div class="dropdown">
+                        <a href="#">
+                            <button class="bt" style="font-size: 20px; margin-left: 70px ">@Session["Name"]</button>
+                        </a>
+                        <div class="dropdown-content">
+                            <a class="a1" href="@Url.Action("ProfileUser","Login")">
+                                Profile
+                            </a>
+
+                            <a class="a1" href="@url">
+                                Yêu thích
+                            </a>
+                            <a class="a1" href="@Url.Action("Logout","Login")">
+                                Đăng xuất
+                            </a>
+                            @if (Session["Role"] != null)
+                            {
+                                <a class="a1" href="@Url.Action("Admin","Admin", new {area = "ADMIN"})">
+                                    Sang Trang Admin
+                                </a>
+                            }
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <a href="@Url.Action("Login","Login")">
+                    <button class="bt" style="margin-left: 70px">LOGIN</button>
+                </a>
+            }
+        </nav>
 
         </div>
         <div class="wrapper">
             <div class="content" style="display:flex;flex-direction:column;align-items:center;">
-                <h3 id="output" style="margin-bottom:50px; color:white"></h3>
                 @RenderBody()
             </div>
             <footer>
@@ -98,7 +111,7 @@
         const header = document.querySelector('.div-header');
         let isCloseToThreshold = false;
         const threshold = 1.5; // Khoảng cách ngưỡng
-
+        //Chỉnh thanh header khi lướt
         window.addEventListener('scroll', function () {
             if (window.scrollY > threshold && !isCloseToThreshold) {
                 isCloseToThreshold = true;
@@ -108,10 +121,10 @@
             } else if (window.scrollY <= threshold && isCloseToThreshold) {
                 isCloseToThreshold = false;
                 // Thực hiện các thay đổi khi không gần đến ngưỡng
-                header.style.backgroundColor = '#1e1e1e';
+                header.style.backgroundColor = '#101010';
             }
         });
-
+        //Chỉnh sửa search , khi có giá trị thì sẽ thao tác được còn ngược lại thì không
         function onChangeSearch(val) {
             const tukhoa = document.getElementById('search_bar')
             const searchButton = document.getElementById('search_button');
