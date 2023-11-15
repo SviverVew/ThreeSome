@@ -15,7 +15,6 @@ namespace ThreeSome.Controllers
         [HttpPost]
         public ActionResult SearchResult(string tukhoa, ActionResult action)
         {
-           
                 ViewBag.Search = tukhoa;
                 var list = db.Films.Where(film => film.filmTitle.Contains(tukhoa));
                 return View(list.OrderBy(film => film.filmTitle));

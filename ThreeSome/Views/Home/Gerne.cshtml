@@ -25,12 +25,12 @@ else
 </h2>
 
 }
-<div class="container" style="display:flex;flex-wrap:wrap;margin-left:-20%">
+<div class="container" style="display:flex;flex-wrap:wrap;margin-left:">
     @foreach (var item in Model)
     {
         if (@Session["Name"] == null)
         {
-            <div class="col" style="margin:50px;color:white">
+            <div class="col" style="margin: 50px 0 10px 10px; color: white; display: flex; flex-wrap: wrap; ">
                 <img class="size-img" src="@Url.Content(item.FilmImg)" />
                 <div class="box-video">
                     <h3 class="card-title">@item.FilmTitle</h3>
@@ -42,7 +42,7 @@ else
         else
         {
             <a style="text-decoration:none" href="@Url.Action("FilmDetail", "FilmTag", new { area = "" })?FilmID=@item.FilmID">
-                <div class="col" style="margin:50px;color:white">
+                <div class="col" style="margin: 50px 0 50px 50px; color: white; display: flex; flex-wrap: wrap;">
                     <img class="size-img" src="@Url.Content(item.FilmImg)" />
                     <div class="box-video">
                         <h3 class="card-title">@item.FilmTitle</h3>

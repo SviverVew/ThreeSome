@@ -54,6 +54,7 @@ namespace ThreeSome.Models
         [NotMapped]
         [Compare("userPass")]
         [Required(ErrorMessage = "Not empty")]
+        [DisplayName("Nhập lại mật khẩu")]
         public string userRepass { get; set; }
     }
 }

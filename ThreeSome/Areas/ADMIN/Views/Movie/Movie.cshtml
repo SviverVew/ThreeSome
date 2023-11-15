@@ -10,8 +10,10 @@
     }
 </style>
 <p style="margin-left:50px;font-size:25px;color:#00ff90;text-decoration:none">
-    @Html.ActionLink("Create", "Create","Movie")
+    @Html.ActionLink("Create", "Create", "Movie")<br /> 
+    @Html.ActionLink("Chỉnh sửa tập phim", "Video", "Video")
 </p>
+
 <table class="table" style="color:white">
     <tr>
         <th>
@@ -58,7 +60,7 @@
             @Html.DisplayFor(modelItem => item.filmLink)
         </td>
         <td>
-			<img src="@Url.Content(item.filmIMG)" alt="Movie Thumbnail" style="height:10rem ; width:10rem">
+			<img src="@Url.Content(item.filmIMG)" alt="Movie Thumbnail" style="height: 10rem; width: 10rem; object-fit: cover;">
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.filmGenre)

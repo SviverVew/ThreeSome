@@ -39,7 +39,7 @@ namespace ThreeSome.Areas.ADMIN.Controllers
                 }
                 db.espisodes.Add(video);
                 db.SaveChanges();
-                return RedirectToAction("Movie");
+                return RedirectToAction("Video");
             }
             catch
             {
@@ -59,13 +59,6 @@ namespace ThreeSome.Areas.ADMIN.Controllers
             db.espisodes.Remove(video);
             db.SaveChanges();
             return RedirectToAction("Video");
-        }
-        #endregion
-
-        #region "THONG TIN VIDEO"
-        public ActionResult Details(int id)
-        {
-            return View(db.espisodes.Where(s => s.vidID == id).FirstOrDefault());
         }
         #endregion
 

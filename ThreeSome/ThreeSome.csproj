@@ -266,6 +266,8 @@
     <Content Include="Areas\ADMIN\Views\Video\Video.cshtml" />
     <Content Include="Areas\ADMIN\Views\Video\ChooseFilm.cshtml" />
     <Content Include="Areas\ADMIN\Views\Video\Create.cshtml" />
+    <Content Include="Areas\ADMIN\Views\Video\Delete.cshtml" />
+    <Content Include="Areas\ADMIN\Views\Video\Edit.cshtml" />
     <None Include="Scripts\Bootstrap\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\Bootstrap\jquery-3.4.1.js" />
     <Content Include="Scripts\Bootstrap\jquery-3.4.1.min.js" />

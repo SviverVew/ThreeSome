@@ -23,8 +23,8 @@
     transition: 0.3s;
     border-radius:15px;
 }
-    .col:hover {
-        box-shadow: 17px 0px 30px white;
+.col:hover {
+    box-shadow: 17px 0px 30px white;
     }
 .row {
     display: flex;

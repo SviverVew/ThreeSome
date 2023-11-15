@@ -41,7 +41,7 @@ namespace ThreeSome.Areas.ADMIN.Controllers
                 }
                 db.Films.Add(film);
                 db.SaveChanges();
-                return RedirectToAction("Movie");
+                return RedirectToAction("Create", "Video");
             }
             catch
             {

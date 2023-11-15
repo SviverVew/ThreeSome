@@ -50,7 +50,7 @@ else if (Model.Any())
 </script>
 <h3 style="margin-top:300px;color:white">Danh sách các tập phim </h3>
 <br />
-<div class="container" style="display:flex">
+<div class="container" style="display:flex;flex-wrap:wrap">
     @foreach (var item in Model)
     {
         if (@Session["Name"] == null)
